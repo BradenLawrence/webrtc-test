@@ -36,9 +36,11 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Web RTC Test</h1>
         </header>
-        <video ref={ video => this.video = video } width={ constraints.video.width } height={ constraints.video.height } autoPlay="true" />
-        <button onClick={ () => {this.initStream()} }>Start recording</button>
-        <button onClick={ () => {this.stopStream()} }>Stop recording</button>
+        <div class="video-frame">
+          <video ref={ video => this.video = video } width={ constraints.video.width } height={ constraints.video.height } autoPlay="true" />
+          <button onClick={ () => {this.initStream()} }>Start recording</button>
+          <button onClick={ () => {this.stopStream()} }>Stop recording</button>
+        </div>
       </div>
     );
   }
