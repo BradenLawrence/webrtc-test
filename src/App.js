@@ -5,8 +5,23 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const getWebcam = function(constraints) {
-      return navigator.mediaDevices.getUserMedia(constraints)
+    
+    const controls = {
+      acquireStream(constraints) {
+        return navigator.mediaDevices.getUserMedia(constraints)
+        .then( stream => { return stream } )
+      },
+      stop(stream) {
+        stream.getTracks()[0].stop()
+      }
+    }
+
+    const constraints = {
+      video: {
+        width:  800,
+        height: 600
+      },
+      audio:  false
     }
 
     return (
@@ -16,16 +31,8 @@ class App extends Component {
           <h1 className="App-title">Web RTC Test</h1>
         </header>
         <Video 
-          acquireStream = { getWebcam } 
-          constraints   = {
-            {
-              video: {
-                width:  800,
-                height: 600
-              },
-              audio:  false
-            }
-          }
+          controls    = { controls }
+          constraints = { constraints }
         />
       </div>
     )

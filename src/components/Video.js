@@ -1,28 +1,33 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Video = (props) => {
-    
-    const initStream = (target) => {
-        props.acquireStream(props.constraints)
-        .then( stream => target.srcObject = stream )
+class Video extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            stream: MediaSource
+        }
     }
     
-    const stopStream = (target) => {
-        this.state.videoSource.getTracks()[0].stop()
+    render() {
+        return (
+            <div className="video-frame">
+                <video 
+                    ref         = { video => this.video = video } 
+                    width       = { this.props.constraints.video.width } 
+                    height      = { this.props.constraints.video.height } 
+                    autoPlay    = "true" 
+                />
+                <button onClick={ () => {
+                        this.props.controls.acquireStream(this.props.constraints)
+                        .then( stream => {this.setState({ stream }, 
+                            () => this.video.srcObject = this.state.stream)} 
+                        )
+                    }
+                }>Start recording</button>
+                <button onClick={ () => this.props.controls.stop(this.state.stream) }>Stop recording</button>
+            </div>
+        )
     }
-
-    return (
-        <div className="video-frame">
-            <video 
-                ref         = { video => this.video = video } 
-                width       = { props.constraints.video.width } 
-                height      = { props.constraints.video.height } 
-                autoPlay    ="true" 
-            />
-            <button onClick={ () => initStream(this.video) }>Start recording</button>
-            <button onClick={ () => stopStream(this.video) }>Stop recording</button>
-        </div>
-    )
 }
 
 export { Video }
