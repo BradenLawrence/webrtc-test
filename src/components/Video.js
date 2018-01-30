@@ -6,28 +6,34 @@ class Video extends Component {
         this.state = {
             stream: MediaSource
         }
+
+        this.start  = this.start.bind(this)
+        this.stop   = this.stop.bind(this)
     }
-    
+
+    start() {
+        this.props.controls.acquireStream(this.props.constraints)
+        .then( stream => {this.setState({ stream }, 
+            () => this.video.srcObject = this.state.stream)} 
+        )
+    }
+
+    stop(event) {
+        this.props.controls.stop(this.state.stream)
+    }
+
     render() {
-        const controls      = this.props.controls
-        const constraints   = this.props.contraints
 
         return (
             <div className="video-frame">
                 <video 
                     ref         = { video => this.video = video } 
-                    width       = { constraints.video.width } 
-                    height      = { constraints.video.height } 
+                    width       = { this.props.constraints.video.width } 
+                    height      = { this.props.constraints.video.height } 
                     autoPlay    = "true" 
                 />
-                <button onClick={ () => {
-                        controls.acquireStream(constraints)
-                        .then( stream => {this.setState({ stream }, 
-                            () => this.video.srcObject = this.state.stream)} 
-                        )
-                    }
-                }>Start recording</button>
-                <button onClick={ () => controls.stop(this.state.stream) }>Stop recording</button>
+                <button onClick={ () => this.start() }>Start recording</button>
+                <button onClick={ () => this.stop() }>Stop recording</button>
             </div>
         )
     }
