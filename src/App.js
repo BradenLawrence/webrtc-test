@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { VideoContainer }   from './containers/VideoContainer'
-import { Video }            from './components/Video'
 import logo                 from './logo.svg';
 import './App.css';
 
