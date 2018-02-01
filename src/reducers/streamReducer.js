@@ -6,8 +6,7 @@ const streamReducer = function(state = {}, action) {
             console.log('Reducer says: ' + action.payload)
             return action.payload
         case STOP_STREAM: 
-            // console.log(action.payload)
-            // action.payload.getTracks()[0].stop()
+            action.payload.getTracks()[0].stop()
             return action.payload
         default:
             return state

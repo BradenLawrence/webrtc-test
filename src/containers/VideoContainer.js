@@ -21,7 +21,6 @@ class Video extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('Incomming props: ' + nextProps)
         this.video.srcObject = nextProps.stream
         
     }
