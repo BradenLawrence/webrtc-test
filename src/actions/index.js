@@ -4,7 +4,6 @@ const START_STREAM  = 'START_STREAM',
 
 const StartStream = function(constraints) {
     const stream = navigator.mediaDevices.getUserMedia(constraints)
-    console.log('Action says: ' + stream)
     return {
         type:       'START_STREAM',
         payload:    stream
@@ -12,15 +11,17 @@ const StartStream = function(constraints) {
 }
 
 const StopStream = function(stream) {
-    
     return {
         type:       'STOP_STREAM',
         payload:    stream
     }
 }
 
-const RecordImage = function(stream) {
-    // Pull image from stream here
+const RecordImage = function(video, canvas) {
+    const context = canvas.getContext('2d')
+    context.drawImage(video, 0, 0)
+    const image = canvas.toDataURL('image/png')
+    console.log(image)
     return {
         type:       'RECORD_IMAGE',
         payload:    image
