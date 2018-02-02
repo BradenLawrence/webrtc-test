@@ -4,7 +4,7 @@ import { connect }                  from 'react-redux'
 class ScreenshotGallery extends Component {
     
     listImages() {
-        // Get array of images
+        return <img src={ this.props.screenshots[0] } />
     }
 
     render() {
