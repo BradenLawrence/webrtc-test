@@ -21,7 +21,6 @@ const RecordImage = function(video, canvas) {
     const context = canvas.getContext('2d')
     context.drawImage(video, 0, 0)
     const image = canvas.toDataURL('image/png')
-    console.log(image)
     return {
         type:       'RECORD_IMAGE',
         payload:    image
