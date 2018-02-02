@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { VideoContainer }   from './containers/VideoContainer'
-import logo                 from './logo.svg';
+import React, { Component }           from 'react'
+import { VideoContainer }             from './containers/VideoContainer'
+import { ScreenshotGalleryContainer } from './containers/ScreenshotGalleryContainer'
+import logo                           from './logo.svg'
 import './App.css';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
           <h1 className="App-title">Web RTC Test</h1>
         </header>
         <VideoContainer />
+        <ScreenshotGalleryContainer />
       </div>
     )
   }
