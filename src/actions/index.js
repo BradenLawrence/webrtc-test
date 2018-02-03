@@ -33,6 +33,7 @@ const RecordImage = function(video, canvas) {
 const GenerateGif = function(images=[], options) {
     // maek gif
     const gif = new GifEncoder(10, 10)
+    console.log(gif)
     return {
         type:       GENERATE_GIF,
         payload:    gif

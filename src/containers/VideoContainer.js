@@ -3,7 +3,8 @@ import { connect }              from 'react-redux'
 import { bindActionCreators }   from 'redux'
 import { StartStream, 
          StopStream, 
-         RecordImage }          from '../actions'
+         RecordImage,
+         GenerateGif }          from '../actions'
 
 class Video extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class Video extends Component {
         this.start      = this.start.bind(this)
         this.stop       = this.stop.bind(this)
         this.takePic    = this.takePic.bind(this)
+        this.createGif  = this.createGif.bind(this)
     }
 
     start(event) {
@@ -28,6 +30,11 @@ class Video extends Component {
         this.props.RecordImage(this.video, this.canvas)
     }
 
+    createGif(event) {
+        event.preventDefault()
+        this.props.GenerateGif(this.props.screenshots)
+    }
+
     componentWillReceiveProps(nextProps) {
         this.video.srcObject = nextProps.stream
         
@@ -43,9 +50,10 @@ class Video extends Component {
                         height      = { this.props.constraints.video.height } 
                         autoPlay    = "true" 
                     />
-                    <button onClick = { this.start   }>Start recording</button>
-                    <button onClick = { this.stop    }>Stop recording</button>
-                    <button onClick = { this.takePic }>Take Picture</button>
+                    <button onClick = { this.start     }>Start recording</button>
+                    <button onClick = { this.stop      }>Stop recording</button>
+                    <button onClick = { this.takePic   }>Take Picture</button>
+                    <button onClick = { this.createGif }>Create a gif</button>
                 </div>
                 {/* A canvas element must be present to take screenshots, this one is hidden via css. */}
                 <div className="canvas-frame">
@@ -63,12 +71,13 @@ class Video extends Component {
 function mapStateToProps(state) {
     return {
         stream:         state.stream,
-        constraints:    state.constraints
+        constraints:    state.constraints,
+        screenshots:    state.screenshots
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ StartStream, StopStream, RecordImage }, dispatch)
+    return bindActionCreators({ StartStream, StopStream, RecordImage, GenerateGif }, dispatch)
 }
 
 const VideoContainer = connect(mapStateToProps, mapDispatchToProps)(Video)
