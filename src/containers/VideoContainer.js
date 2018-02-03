@@ -47,6 +47,7 @@ class Video extends Component {
                     <button onClick = { this.stop    }>Stop recording</button>
                     <button onClick = { this.takePic }>Take Picture</button>
                 </div>
+                {/* A canvas element must be present to take screenshots, this one is hidden via css. */}
                 <div className="canvas-frame">
                     <canvas 
                         ref         = { canvas => this.canvas = canvas }
