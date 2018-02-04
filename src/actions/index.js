@@ -1,4 +1,13 @@
-import GifEncoder   from 'gif-encoder'
+import GifReadWrite from 'readwrite-gif'
+import base64       from '../base64'
+
+var encoder = undefined
+function initEncoder() {
+    encoder = new GifReadWrite.Encoder()
+    encoder.setRepeat(0)
+    encoder.setDelay(100)
+    encoder.start()
+}
 
 const START_STREAM  = 'START_STREAM',
       STOP_STREAM   = 'STOP_STREAM',
@@ -21,8 +30,12 @@ const StopStream = function(stream) {
 }
 
 const RecordImage = function(video, canvas) {
+    if(encoder === undefined) {
+        initEncoder()
+    }
     const context = canvas.getContext('2d')
     context.drawImage(video, 0, 0)
+    encoder.addFrame(context)
     const image = canvas.toDataURL('image/png')
     return {
         type:       RECORD_IMAGE,
@@ -30,13 +43,13 @@ const RecordImage = function(video, canvas) {
     }
 }
 
-const GenerateGif = function(images=[], options) {
-    // maek gif
-    const gif = new GifEncoder(10, 10)
-    console.log(gif)
+const GenerateGif = function(images) {
+    encoder.finish()
+    const binary_gif = encoder.stream().getData()
+    const data_url = 'data:image/gif;base64,' + base64(binary_gif);
     return {
         type:       GENERATE_GIF,
-        payload:    gif
+        payload:    data_url
     }
 }
 

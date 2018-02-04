@@ -37,7 +37,6 @@ class Video extends Component {
 
     componentWillReceiveProps(nextProps) {
         this.video.srcObject = nextProps.stream
-        
     }
 
     render() {
@@ -72,7 +71,8 @@ function mapStateToProps(state) {
     return {
         stream:         state.stream,
         constraints:    state.constraints,
-        screenshots:    state.screenshots
+        screenshots:    state.screenshots,
+        gif:            state.gif
     }
 }
 
