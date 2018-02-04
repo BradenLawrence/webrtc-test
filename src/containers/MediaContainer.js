@@ -58,7 +58,7 @@ class Media extends Component {
             case 'gif':
                 return <img className="playback" src={ this.props.gif } alt='' />
             default:
-                return ''
+                return <div className="placeholder" />
         }
     }
 
