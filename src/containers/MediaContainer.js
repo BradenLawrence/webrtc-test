@@ -2,7 +2,7 @@ import React, { Component }     from 'react'
 import { connect }              from 'react-redux'
 import { bindActionCreators }   from 'redux'
 import { StartStream, 
-         StopStream, 
+         StopStream,
          RecordImage,
          GenerateGif }          from '../actions'
 
@@ -30,12 +30,12 @@ class Media extends Component {
 
     takePic(event) {
         event.preventDefault()
-        this.props.RecordImage(this.video, this.canvas)
+        this.props.RecordImage(this.video, this.canvas, this.props.encoder)
     }
 
     createGif(event) {
         event.preventDefault()
-        this.props.GenerateGif()
+        this.props.GenerateGif(this.props.encoder)
     }
 
     componentDidUpdate() {
@@ -120,6 +120,7 @@ function mapStateToProps(state) {
     return {
         stream:         state.stream,
         constraints:    state.constraints,
+        encoder:        state.encoder,
         gif:            state.gif,
         active:         state.active
     }

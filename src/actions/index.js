@@ -1,14 +1,6 @@
 import GifReadWrite from 'readwrite-gif'
 import base64       from '../base64'
 
-var encoder = undefined
-function initEncoder() {
-    encoder = new GifReadWrite.Encoder()
-    encoder.setRepeat(0)
-    encoder.setDelay(100)
-    encoder.start()
-}
-
 const START_STREAM  = 'START_STREAM',
       STOP_STREAM   = 'STOP_STREAM',
       RECORD_IMAGE  = 'RECORD_IMAGE',
@@ -30,21 +22,23 @@ const StopStream = function(stream) {
     }
 }
 
-const RecordImage = function(video, canvas) {
-    if(encoder === undefined) {
-        initEncoder()
+const RecordImage = function(video, canvas, encoder) {
+    if(!encoder) {
+        encoder = new GifReadWrite.Encoder()
+        encoder.setRepeat(0)
+        encoder.setDelay(100)
+        encoder.start()
     }
     const context = canvas.getContext('2d')
     context.drawImage(video, 0, 0)
     encoder.addFrame(context)
-    const image = canvas.toDataURL('image/png')
     return {
         type:       RECORD_IMAGE,
-        payload:    image
+        payload:    encoder
     }
 }
 
-const GenerateGif = function() {
+const GenerateGif = function(encoder) {
     encoder.finish()
     const binary_gif = encoder.stream().getData()
     const data_url = 'data:image/gif;base64,' + base64(binary_gif);
