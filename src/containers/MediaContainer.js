@@ -13,8 +13,7 @@ class Media extends Component {
         this.stop           = this.stop.bind(this)
         this.takePic        = this.takePic.bind(this)
         this.createGif      = this.createGif.bind(this)
-        this.renderVideo    = this.renderVideo.bind(this)
-        this.renderPlayback = this.renderPlayback.bind(this)
+        this.renderMedia    = this.renderMedia.bind(this)
         this.renderControls = this.renderControls.bind(this)
         this.renderCanvas   = this.renderCanvas.bind(this)
     }
@@ -45,48 +44,48 @@ class Media extends Component {
         }
     }
 
-    renderVideo() {
-        if(this.props.active === 'video') {
-            return (
-                <video 
-                    ref         = { video => this.video = video } 
-                    width       = { this.props.constraints.video.width } 
-                    height      = { this.props.constraints.video.height } 
-                    autoPlay    = "true" 
-                />
-            )
-        }
-    }
-
-    renderPlayback() {
-        if(this.props.active === 'gif') {
-            return ( <img className="playback" src={ this.props.gif } alt='' /> )
+    renderMedia() {
+        switch(this.props.active) {
+            case 'video':
+                return (
+                    <video 
+                        ref         = { video => this.video = video } 
+                        width       = { this.props.constraints.video.width } 
+                        height      = { this.props.constraints.video.height } 
+                        autoPlay    = "true" 
+                    />
+                )
+            case 'gif':
+                return <img className="playback" src={ this.props.gif } alt='' />
+            default:
+                return ''
         }
     }
 
     renderControls() {
-        if(this.props.active === 'video') {
-            return( 
-                <span>
-                    <button onClick = { this.stop      }>Cancel</button>
-                    <button onClick = { this.takePic   }>Take Picture</button>
-                    <button onClick = { this.createGif }>Create a gif</button>
-                </span>
-            )
+        switch(this.props.active) {
+            case 'video':
+                return( 
+                    <span>
+                        <button onClick = { this.stop      }>Cancel</button>
+                        <button onClick = { this.takePic   }>Take Picture</button>
+                        <button onClick = { this.createGif }>Create a gif</button>
+                    </span>
+                )
+            case 'gif':
+                return(
+                    <span>
+                        <button>Try Again</button>
+                        <button>Share</button>
+                    </span>
+                )
+            default:
+                return(
+                    <span>
+                        <button onClick = { this.start }>Start recording</button>
+                    </span>
+                )
         }
-        if(this.props.active === 'gif') {
-            return(
-                <span>
-                    <button>Try Again</button>
-                    <button>Share</button>
-                </span>
-            )
-        }
-        return(
-            <span>
-                <button onClick = { this.start }>Start recording</button>
-            </span>
-        )
     }
 
     renderCanvas() {
@@ -103,8 +102,7 @@ class Media extends Component {
         return (
             <div>
                 <div className="media-frame">
-                    { this.renderVideo() }
-                    { this.renderPlayback() }
+                    { this.renderMedia() }
                 </div>
                 <div className="controls">
                     { this.renderControls() }
@@ -122,7 +120,6 @@ function mapStateToProps(state) {
     return {
         stream:         state.stream,
         constraints:    state.constraints,
-        screenshots:    state.screenshots,
         gif:            state.gif,
         active:         state.active
     }
