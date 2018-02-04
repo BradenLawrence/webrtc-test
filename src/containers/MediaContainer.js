@@ -6,7 +6,7 @@ import { StartStream,
          RecordImage,
          GenerateGif }          from '../actions'
 
-class Video extends Component {
+class Media extends Component {
     constructor(props) {
         super(props)
         this.start      = this.start.bind(this)
@@ -42,13 +42,15 @@ class Video extends Component {
     render() {
         return (
             <div>
-                <div className="video-frame">
+                <div className="media-frame">
                     <video 
                         ref         = { video => this.video = video } 
                         width       = { this.props.constraints.video.width } 
                         height      = { this.props.constraints.video.height } 
                         autoPlay    = "true" 
                     />
+                </div>
+                <div className="controls">
                     <button onClick = { this.start     }>Start recording</button>
                     <button onClick = { this.stop      }>Stop recording</button>
                     <button onClick = { this.takePic   }>Take Picture</button>
@@ -80,6 +82,6 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ StartStream, StopStream, RecordImage, GenerateGif }, dispatch)
 }
 
-const VideoContainer = connect(mapStateToProps, mapDispatchToProps)(Video)
+const MediaContainer = connect(mapStateToProps, mapDispatchToProps)(Media)
 
-export { VideoContainer }
+export { MediaContainer }
