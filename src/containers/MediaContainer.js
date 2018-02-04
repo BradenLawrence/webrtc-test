@@ -9,10 +9,14 @@ import { StartStream,
 class Media extends Component {
     constructor(props) {
         super(props)
-        this.start      = this.start.bind(this)
-        this.stop       = this.stop.bind(this)
-        this.takePic    = this.takePic.bind(this)
-        this.createGif  = this.createGif.bind(this)
+        this.start          = this.start.bind(this)
+        this.stop           = this.stop.bind(this)
+        this.takePic        = this.takePic.bind(this)
+        this.createGif      = this.createGif.bind(this)
+        this.renderVideo    = this.renderVideo.bind(this)
+        this.renderPlayback = this.renderPlayback.bind(this)
+        this.renderControls = this.renderControls.bind(this)
+        this.renderCanvas   = this.renderCanvas.bind(this)
     }
 
     start(event) {
@@ -32,37 +36,82 @@ class Media extends Component {
 
     createGif(event) {
         event.preventDefault()
-        this.props.GenerateGif(this.props.screenshots)
+        this.props.GenerateGif()
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.video.srcObject = nextProps.stream
+    componentDidUpdate() {
+        if(this.props.active === 'video') {
+            this.video.srcObject = this.props.stream
+        }
+    }
+
+    renderVideo() {
+        if(this.props.active === 'video') {
+            return (
+                <video 
+                    ref         = { video => this.video = video } 
+                    width       = { this.props.constraints.video.width } 
+                    height      = { this.props.constraints.video.height } 
+                    autoPlay    = "true" 
+                />
+            )
+        }
+    }
+
+    renderPlayback() {
+        if(this.props.active === 'gif') {
+            return ( <img className="playback" src={ this.props.gif } alt='' /> )
+        }
+    }
+
+    renderControls() {
+        if(this.props.active === 'video') {
+            return( 
+                <span>
+                    <button onClick = { this.stop      }>Cancel</button>
+                    <button onClick = { this.takePic   }>Take Picture</button>
+                    <button onClick = { this.createGif }>Create a gif</button>
+                </span>
+            )
+        }
+        if(this.props.active === 'gif') {
+            return(
+                <span>
+                    <button>Try Again</button>
+                    <button>Share</button>
+                </span>
+            )
+        }
+        return(
+            <span>
+                <button onClick = { this.start }>Start recording</button>
+            </span>
+        )
+    }
+
+    renderCanvas() {
+        return(
+            <canvas 
+                ref         = { canvas => this.canvas = canvas }
+                width       = { this.props.constraints.video.width } 
+                height      = { this.props.constraints.video.height } 
+            />
+        )
     }
 
     render() {
         return (
             <div>
                 <div className="media-frame">
-                    <video 
-                        ref         = { video => this.video = video } 
-                        width       = { this.props.constraints.video.width } 
-                        height      = { this.props.constraints.video.height } 
-                        autoPlay    = "true" 
-                    />
+                    { this.renderVideo() }
+                    { this.renderPlayback() }
                 </div>
                 <div className="controls">
-                    <button onClick = { this.start     }>Start recording</button>
-                    <button onClick = { this.stop      }>Stop recording</button>
-                    <button onClick = { this.takePic   }>Take Picture</button>
-                    <button onClick = { this.createGif }>Create a gif</button>
+                    { this.renderControls() }
                 </div>
                 {/* A canvas element must be present to take screenshots, this one is hidden via css. */}
                 <div className="canvas-frame">
-                    <canvas 
-                        ref         = { canvas => this.canvas = canvas }
-                        width       = { this.props.constraints.video.width } 
-                        height      = { this.props.constraints.video.height } 
-                    />
+                    { this.renderCanvas() }
                 </div>
             </div>
         )
@@ -74,7 +123,8 @@ function mapStateToProps(state) {
         stream:         state.stream,
         constraints:    state.constraints,
         screenshots:    state.screenshots,
-        gif:            state.gif
+        gif:            state.gif,
+        active:         state.active
     }
 }
 

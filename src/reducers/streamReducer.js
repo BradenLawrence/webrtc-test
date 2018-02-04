@@ -5,7 +5,6 @@ const streamReducer = function(state = {}, action) {
         case START_STREAM:
             return action.payload
         case STOP_STREAM: 
-            action.payload.getTracks()[0].stop()
             return action.payload
         default:
             return state

@@ -23,6 +23,7 @@ const StartStream = function(constraints) {
 }
 
 const StopStream = function(stream) {
+    stream.getTracks()[0].stop()
     return {
         type:       STOP_STREAM,
         payload:    stream
@@ -43,7 +44,7 @@ const RecordImage = function(video, canvas) {
     }
 }
 
-const GenerateGif = function(images) {
+const GenerateGif = function() {
     encoder.finish()
     const binary_gif = encoder.stream().getData()
     const data_url = 'data:image/gif;base64,' + base64(binary_gif);
