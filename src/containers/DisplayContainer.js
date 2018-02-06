@@ -24,9 +24,11 @@ class Display extends Component {
     }
 
     renderDisplay() {
-        switch(this.active) {
+        switch(this.props.active) {
             case 'gif':
-                return <img className="playback" src={ this.gifURL } alt='' />
+                return (
+                    <img className="playback" src={ this.props.gif } alt='' />
+                )
             default:
                 return(
                     <video 
