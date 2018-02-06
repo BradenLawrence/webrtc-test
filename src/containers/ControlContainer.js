@@ -6,16 +6,19 @@ import { StartStream,
          RecordImage,
          GenerateGif }          from '../actions'
 
-class Media extends Component {
+class Control extends Component {
     constructor(props) {
         super(props)
         this.start          = this.start.bind(this)
         this.stop           = this.stop.bind(this)
         this.takePic        = this.takePic.bind(this)
         this.createGif      = this.createGif.bind(this)
-        this.renderMedia    = this.renderMedia.bind(this)
+        this.tryAgain       = this.tryAgain.bind(this)
+        this.share          = this.share.bind(this)
+        this.setMedia       = this.setMedia.bind(this)
         this.renderControls = this.renderControls.bind(this)
-        this.renderCanvas   = this.renderCanvas.bind(this)
+
+        this.state = { media: undefined }
     }
 
     start(event) {
@@ -30,7 +33,8 @@ class Media extends Component {
 
     takePic(event) {
         event.preventDefault()
-        this.props.RecordImage(this.video, this.canvas, this.props.encoder)
+        // The drawImage method takes an HTMLVideoElement and HTMLCanvasElement as arguments, so we pass them as refs here
+        this.props.RecordImage(this.state.media, this.canvas, this.props.encoder)
     }
 
     createGif(event) {
@@ -38,28 +42,18 @@ class Media extends Component {
         this.props.GenerateGif(this.props.encoder)
     }
 
-    componentDidUpdate() {
-        if(this.props.active === 'video') {
-            this.video.srcObject = this.props.stream
-        }
+    tryAgain(event) {
+        event.preventDefault()
+        // restart
     }
 
-    renderMedia() {
-        switch(this.props.active) {
-            case 'video':
-                return (
-                    <video 
-                        ref         = { video => this.video = video } 
-                        width       = { this.props.constraints.video.width } 
-                        height      = { this.props.constraints.video.height } 
-                        autoPlay    = "true" 
-                    />
-                )
-            case 'gif':
-                return <img className="playback" src={ this.props.gif } alt='' />
-            default:
-                return <div className="placeholder" />
-        }
+    share(event) {
+        event.preventDefault()
+        // share media
+    }
+
+    setMedia(media) {
+        this.setState({ media })
     }
 
     renderControls() {
@@ -75,8 +69,8 @@ class Media extends Component {
             case 'gif':
                 return(
                     <span>
-                        <button>Try Again</button>
-                        <button>Share</button>
+                        <button onClick = { this.tryAgain }>Try Again</button>
+                        <button onClick = { this.share    }>Share</button>
                     </span>
                 )
             default:
@@ -88,31 +82,20 @@ class Media extends Component {
         }
     }
 
-    renderCanvas() {
-        return(
-            <canvas 
-                ref         = { canvas => this.canvas = canvas }
-                width       = { this.props.constraints.video.width } 
-                height      = { this.props.constraints.video.height } 
-            />
-        )
-    }
-
     render() {
-        return (
-            <div>
-                <div className="media-frame">
-                    { this.renderMedia() }
-                </div>
-                <div className="controls">
-                    { this.renderControls() }
-                </div>
-                {/* A canvas element must be present to take screenshots, this one is hidden via css. */}
+        return(
+            <div className="controls">
+                { this.renderControls() }
                 <div className="canvas-frame">
-                    { this.renderCanvas() }
+                    <canvas 
+                        ref         = { canvas => this.canvas = canvas }
+                        width       = { this.props.constraints.video.width } 
+                        height      = { this.props.constraints.video.height } 
+                    />
                 </div>
             </div>
         )
+        
     }
 }
 
@@ -121,7 +104,6 @@ function mapStateToProps(state) {
         stream:         state.stream,
         constraints:    state.constraints,
         encoder:        state.encoder,
-        gif:            state.gif,
         active:         state.active
     }
 }
@@ -130,6 +112,6 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ StartStream, StopStream, RecordImage, GenerateGif }, dispatch)
 }
 
-const MediaContainer = connect(mapStateToProps, mapDispatchToProps)(Media)
+const ControlContainer = connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Control)
 
-export { MediaContainer }
+export { ControlContainer }

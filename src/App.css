@@ -29,6 +29,8 @@
 }
 
 .media-frame > video {
+  width: 800px;
+  height: 600px;
   margin: 20px auto;
   background-color: #333333;
   display: block;
