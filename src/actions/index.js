@@ -4,7 +4,8 @@ import base64       from '../base64'
 const START_STREAM  = 'START_STREAM',
       STOP_STREAM   = 'STOP_STREAM',
       RECORD_IMAGE  = 'RECORD_IMAGE',
-      GENERATE_GIF  = 'GENERATE_GIF'
+      GENERATE_GIF  = 'GENERATE_GIF',
+      RESTART       = 'RESTART'
 
 const StartStream = function(constraints) {
     const stream = navigator.mediaDevices.getUserMedia(constraints)
@@ -41,10 +42,16 @@ const RecordImage = function(video, canvas, encoder) {
 const GenerateGif = function(encoder) {
     encoder.finish()
     const binary_gif = encoder.stream().getData()
-    const data_url = 'data:image/gif;base64,' + base64(binary_gif);
+    const data_url = 'data:image/gif;base64,' + base64(binary_gif)
     return {
         type:       GENERATE_GIF,
         payload:    data_url
+    }
+}
+
+const Restart = function() {
+    return {
+        type:       RESTART
     }
 }
 
@@ -52,5 +59,6 @@ export {
     START_STREAM,   StartStream,
     STOP_STREAM,    StopStream,
     RECORD_IMAGE,   RecordImage,
-    GENERATE_GIF,   GenerateGif
+    GENERATE_GIF,   GenerateGif,
+    RESTART,        Restart
 }

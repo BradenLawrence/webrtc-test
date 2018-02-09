@@ -1,6 +1,6 @@
 import { START_STREAM, STOP_STREAM } from '../actions'
 
-const streamReducer = function(state = {}, action) {
+const streamReducer = function(state = null, action) {
     switch(action.type) {
         case START_STREAM:
             return action.payload

@@ -1,6 +1,7 @@
 import { START_STREAM,
          STOP_STREAM,
-         GENERATE_GIF } from '../actions'
+         GENERATE_GIF,
+         RESTART } from '../actions'
 
 const activeReducer = function(state = null, action) {
     switch(action.type) {
@@ -10,6 +11,8 @@ const activeReducer = function(state = null, action) {
             return null
         case GENERATE_GIF:
             return 'gif'
+        case RESTART:
+            return null
         default:
             return state
     }

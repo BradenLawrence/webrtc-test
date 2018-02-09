@@ -4,7 +4,8 @@ import { bindActionCreators }   from 'redux'
 import { StartStream, 
          StopStream,
          RecordImage,
-         GenerateGif }          from '../actions'
+         GenerateGif,
+         Restart }          from '../actions'
 
 class Control extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Control extends Component {
         this.tryAgain       = this.tryAgain.bind(this)
         this.share          = this.share.bind(this)
         this.photoshoot     = this.photoshoot.bind(this)
-        this.setMedia       = this.setMedia.bind(this)
+        this.setVideo       = this.setVideo.bind(this)
         this.renderControls = this.renderControls.bind(this)
 
         this.state = { media: undefined }
@@ -43,7 +44,7 @@ class Control extends Component {
 
     tryAgain(event) {
         event.preventDefault()
-        // restart
+        this.props.Restart()
     }
 
     share(event) {
@@ -69,7 +70,7 @@ class Control extends Component {
         }, 1000)
     }
 
-    setMedia(media) {
+    setVideo(media) {
         this.setState({ media })
     }
 
@@ -104,9 +105,9 @@ class Control extends Component {
                 { this.renderControls() }
                 <div className="canvas-frame">
                     <canvas 
-                        ref         = { canvas => this.canvas = canvas }
-                        width       = { this.props.constraints.video.width } 
-                        height      = { this.props.constraints.video.height } 
+                        ref     = { canvas => this.canvas = canvas      }
+                        width   = { this.props.constraints.video.width  } 
+                        height  = { this.props.constraints.video.height } 
                     />
                 </div>
             </div>
@@ -125,7 +126,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ StartStream, StopStream, RecordImage, GenerateGif }, dispatch)
+    return bindActionCreators({ StartStream, StopStream, RecordImage, GenerateGif, Restart }, dispatch)
 }
 
 const ControlContainer = connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Control)

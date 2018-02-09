@@ -6,27 +6,33 @@ import { ControlContainer } from '../containers/ControlContainer'
 class Photobooth extends Component {
     constructor(props) {
         super(props)
-        this.setMedia = this.setMedia.bind(this)
-        this.getVideo = this.getVideo.bind(this)
+        this.setVideo   = this.setVideo.bind(this)
+        this.getVideo   = this.getVideo.bind(this)
+        this.initMedia  = this.initMedia.bind(this)
     }
 
-    setMedia(media) {
-        return this.control.getWrappedInstance().setMedia(media)
+    setVideo(video) {
+        return this.control.getWrappedInstance().setVideo(video)
     }
 
     getVideo() {
         return this.display.getWrappedInstance().getVideo()
     }
 
-    componentDidMount() {
-        this.setMedia(this.getVideo())
+    initMedia() {
+        this.setVideo(this.getVideo())
     }
 
     render() {
         return (
             <div>
-                <DisplayContainer ref= { ref => this.display = ref } />
-                <ControlContainer ref= { ref => this.control = ref } />
+                <DisplayContainer 
+                    ref= { ref => this.display = ref } 
+                    initMedia = { this.initMedia }
+                />
+                <ControlContainer 
+                    ref= { ref => this.control = ref } 
+                />
             </div>
         )
     }

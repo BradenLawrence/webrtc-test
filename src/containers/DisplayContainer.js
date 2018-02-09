@@ -11,22 +11,18 @@ class Display extends Component {
     getVideo() {
         return this.video
     }
-
-    componentDidMount() {
-        // srcObject cannot be defined using JSX, so we must set it here using refs
-        this.video.srcObject = null
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if(this.props.stream !== null) {
-            this.video.srcObject = nextProps.stream
+    
+    componentDidUpdate() {
+        if(this.props.active === 'video') {
+            this.video.srcObject = this.props.stream
+            this.props.initMedia()
         }
     }
 
     renderDisplay() {
         switch(this.props.active) {
             case 'gif':
-                return (
+                return(
                     <img className="playback" src={ this.props.gif } alt='' />
                 )
             default:

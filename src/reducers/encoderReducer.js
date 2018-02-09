@@ -1,5 +1,6 @@
 import { RECORD_IMAGE,
-         GENERATE_GIF } from '../actions'
+         GENERATE_GIF, 
+         RESTART} from '../actions'
 
 const encoderReducer = function(state = null, action) {
     switch(action.type) {
