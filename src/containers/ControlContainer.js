@@ -15,6 +15,7 @@ class Control extends Component {
         this.createGif      = this.createGif.bind(this)
         this.tryAgain       = this.tryAgain.bind(this)
         this.share          = this.share.bind(this)
+        this.photoshoot     = this.photoshoot.bind(this)
         this.setMedia       = this.setMedia.bind(this)
         this.renderControls = this.renderControls.bind(this)
 
@@ -31,14 +32,12 @@ class Control extends Component {
         this.props.StopStream(this.props.stream)
     }
 
-    takePic(event) {
-        event.preventDefault()
+    takePic() {
         // The drawImage method takes an HTMLVideoElement and HTMLCanvasElement as arguments, so we pass them as refs here
         this.props.RecordImage(this.state.media, this.canvas, this.props.encoder)
     }
 
-    createGif(event) {
-        event.preventDefault()
+    createGif() {
         this.props.GenerateGif(this.props.encoder)
     }
 
@@ -52,6 +51,24 @@ class Control extends Component {
         // share media
     }
 
+    photoshoot(event) {
+        event.preventDefault()
+        const queue = [
+            this.takePic,
+            this.takePic,
+            this.takePic,
+            this.takePic,
+            this.createGif
+        ]
+        const timer = setInterval( () => {
+            if(queue[0] !== undefined) {
+                return queue.shift()()
+            } else {
+                return window.clearInterval(timer)
+            }
+        }, 1000)
+    }
+
     setMedia(media) {
         this.setState({ media })
     }
@@ -61,9 +78,8 @@ class Control extends Component {
             case 'video':
                 return( 
                     <span>
-                        <button onClick = { this.stop      }>Cancel</button>
-                        <button onClick = { this.takePic   }>Take Picture</button>
-                        <button onClick = { this.createGif }>Create a gif</button>
+                        <button onClick = { this.stop       }>Cancel</button>
+                        <button onClick = { this.photoshoot }>Start Photobooth</button>
                     </span>
                 )
             case 'gif':
