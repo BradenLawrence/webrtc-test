@@ -71,13 +71,6 @@ class Control extends Component {
                         <button onClick = { this.photoshoot }>Start Photobooth</button>
                     </span>
                 )
-            case 'gif':
-                return(
-                    <span>
-                        <button onClick = { this.tryAgain }>Try Again</button>
-                        <button onClick = { this.share    }>Share</button>
-                    </span>
-                )
             default:
                 return(
                     <span>
