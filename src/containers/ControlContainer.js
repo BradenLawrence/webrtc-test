@@ -14,7 +14,6 @@ class Control extends Component {
         this.stop           = this.stop.bind(this)
         this.takePic        = this.takePic.bind(this)
         this.createGif      = this.createGif.bind(this)
-        this.share          = this.share.bind(this)
         this.photoshoot     = this.photoshoot.bind(this)
         this.setVideo       = this.setVideo.bind(this)
         this.renderControls = this.renderControls.bind(this)
@@ -39,11 +38,6 @@ class Control extends Component {
 
     createGif() {
         this.props.GenerateGif(this.props.encoder)
-    }
-
-    share(event) {
-        event.preventDefault()
-        // share media
     }
 
     photoshoot(event) {
