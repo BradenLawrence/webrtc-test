@@ -11,12 +11,12 @@ class Photobooth extends Component {
         this.initMedia  = this.initMedia.bind(this)
     }
 
-    setVideo(video) {
-        return this.control.getWrappedInstance().setVideo(video)
-    }
-
     getVideo() {
         return this.display.getWrappedInstance().getVideo()
+    }
+
+    setVideo(video) {
+        return this.control.getWrappedInstance().setVideo(video)
     }
 
     initMedia() {

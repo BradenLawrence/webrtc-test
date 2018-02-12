@@ -5,7 +5,7 @@ import { StartStream,
          StopStream,
          RecordImage,
          GenerateGif,
-         Restart }          from '../actions'
+         Restart }              from '../actions'
 
 class Control extends Component {
     constructor(props) {
@@ -14,7 +14,6 @@ class Control extends Component {
         this.stop           = this.stop.bind(this)
         this.takePic        = this.takePic.bind(this)
         this.createGif      = this.createGif.bind(this)
-        this.tryAgain       = this.tryAgain.bind(this)
         this.share          = this.share.bind(this)
         this.photoshoot     = this.photoshoot.bind(this)
         this.setVideo       = this.setVideo.bind(this)
@@ -40,11 +39,6 @@ class Control extends Component {
 
     createGif() {
         this.props.GenerateGif(this.props.encoder)
-    }
-
-    tryAgain(event) {
-        event.preventDefault()
-        this.props.Restart()
     }
 
     share(event) {
@@ -126,7 +120,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ StartStream, StopStream, RecordImage, GenerateGif, Restart }, dispatch)
+    return bindActionCreators({ StartStream, StopStream, RecordImage, GenerateGif }, dispatch)
 }
 
 const ControlContainer = connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Control)

@@ -1,11 +1,20 @@
-import React, { Component } from 'react'
-import { connect }          from 'react-redux'
+import React, { Component }     from 'react'
+import { connect }              from 'react-redux'
+import { bindActionCreators }   from 'redux'
+import { Restart }              from '../actions'
+import { ShareModal }           from '../components/ShareModal';
+
 
 class Display extends Component {
     constructor(props) {
         super(props)
-        this.getVideo       = this.getVideo.bind(this)
-        this.renderDisplay  = this.renderDisplay.bind(this)
+        this.tryAgain = this.tryAgain.bind(this)
+        this.getVideo = this.getVideo.bind(this)
+    }
+
+    tryAgain(event) {
+        event.preventDefault()
+        this.props.Restart()
     }
 
     getVideo() {
@@ -19,28 +28,21 @@ class Display extends Component {
         }
     }
 
-    renderDisplay() {
-        switch(this.props.active) {
-            case 'gif':
-                return(
-                    <img className="playback" src={ this.props.gif } alt='' />
-                )
-            default:
-                return(
-                    <video 
-                        ref         = { video => this.video = video } 
-                        width       = { this.props.constraints.width } 
-                        height      = { this.props.constraints.height } 
-                        autoPlay    = "true" 
-                    />
-                )
-        }
-    }
-
     render() {
         return(
             <div className="media-frame">
-                { this.renderDisplay() }
+                <ShareModal 
+                    isOpen      = { this.props.active === 'gif' }
+                    url         = { this.props.gif }
+                    onClose     = { this.tryAgain }
+                    closeText   = { 'Try Again' }
+                />
+                <video 
+                    ref         = { video => this.video = video } 
+                    width       = { this.props.constraints.width } 
+                    height      = { this.props.constraints.height } 
+                    autoPlay    = "true" 
+                />
             </div>
         )
     }
@@ -55,6 +57,10 @@ function mapStateToProps(state) {
     }
 }
 
-const DisplayContainer = connect(mapStateToProps, null, null, { withRef: true })(Display)
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ Restart }, dispatch)
+}
+
+const DisplayContainer = connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Display)
 
 export { DisplayContainer }
