@@ -1,5 +1,6 @@
 import { START_STREAM,
          STOP_STREAM,
+         START_PHOTOSHOOT,
          GENERATE_GIF,
          RESTART} from '../actions'
 
@@ -9,6 +10,8 @@ const activeReducer = function(state = null, action) {
             return 'video'
         case STOP_STREAM:
             return null
+        case START_PHOTOSHOOT:
+            return 'photoshoot'
         case GENERATE_GIF:
             return 'gif'
         case RESTART:

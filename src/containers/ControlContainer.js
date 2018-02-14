@@ -4,6 +4,7 @@ import { bindActionCreators }   from 'redux'
 import { StartStream, 
          StopStream,
          RecordImage,
+         StartPhotoshoot,
          GenerateGif,
          SetOverlay,
          ClearOverlay }              from '../actions'
@@ -50,6 +51,7 @@ class Control extends Component {
 
     photoshoot(event) {
         event.preventDefault()
+        this.props.StartPhotoshoot()
         const queue = [
             () => { this.showCountdown('3') },
             () => { this.showCountdown('2') },
@@ -82,6 +84,10 @@ class Control extends Component {
                         <button onClick = { this.stop       }>Cancel</button>
                         <button onClick = { this.photoshoot }>Start Photobooth</button>
                     </span>
+                )
+            case 'photoshoot':
+                return( 
+                    null
                 )
             default:
                 return(
@@ -119,7 +125,15 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ StartStream, StopStream, RecordImage, GenerateGif, SetOverlay, ClearOverlay }, dispatch)
+    return bindActionCreators({ 
+        StartStream, 
+        StopStream, 
+        RecordImage, 
+        StartPhotoshoot, 
+        GenerateGif, 
+        SetOverlay, 
+        ClearOverlay 
+    }, dispatch)
 }
 
 const ControlContainer = connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Control)

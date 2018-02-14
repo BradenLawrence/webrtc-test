@@ -1,13 +1,14 @@
 import GifReadWrite from 'readwrite-gif'
 import base64       from '../base64'
 
-const START_STREAM  = 'START_STREAM',
-      STOP_STREAM   = 'STOP_STREAM',
-      RECORD_IMAGE  = 'RECORD_IMAGE',
-      GENERATE_GIF  = 'GENERATE_GIF',
-      RESTART       = 'RESTART',
-      SET_OVERLAY   = 'SET_OVERLAY',
-      CLEAR_OVERLAY = 'CLEAR_OVERLAY'
+const START_STREAM      = 'START_STREAM',
+      STOP_STREAM       = 'STOP_STREAM',
+      RECORD_IMAGE      = 'RECORD_IMAGE',
+      START_PHOTOSHOOT  = 'START_PHOTOSHOOT',
+      GENERATE_GIF      = 'GENERATE_GIF',
+      RESTART           = 'RESTART',
+      SET_OVERLAY       = 'SET_OVERLAY',
+      CLEAR_OVERLAY     = 'CLEAR_OVERLAY'
 
 const StartStream = function(constraints) {
     const stream = navigator.mediaDevices.getUserMedia(constraints)
@@ -38,6 +39,12 @@ const RecordImage = function(video, canvas, encoder) {
     return {
         type:       RECORD_IMAGE,
         payload:    encoder
+    }
+}
+
+const StartPhotoshoot = function() {
+    return {
+        type:       START_PHOTOSHOOT
     }
 }
 
@@ -72,11 +79,12 @@ const ClearOverlay = function() {
 }
 
 export {
-    START_STREAM,   StartStream,
-    STOP_STREAM,    StopStream,
-    RECORD_IMAGE,   RecordImage,
-    GENERATE_GIF,   GenerateGif,
-    RESTART,        Restart,
-    SET_OVERLAY,    SetOverlay,
-    CLEAR_OVERLAY,  ClearOverlay
+    START_STREAM,       StartStream,
+    STOP_STREAM,        StopStream,
+    RECORD_IMAGE,       RecordImage,
+    START_PHOTOSHOOT,   StartPhotoshoot,
+    GENERATE_GIF,       GenerateGif,
+    RESTART,            Restart,
+    SET_OVERLAY,        SetOverlay,
+    CLEAR_OVERLAY,      ClearOverlay
 }
