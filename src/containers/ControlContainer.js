@@ -5,7 +5,8 @@ import { StartStream,
          StopStream,
          RecordImage,
          GenerateGif,
-         Restart }              from '../actions'
+         SetOverlay,
+         ClearOverlay }              from '../actions'
 
 class Control extends Component {
     constructor(props) {
@@ -34,6 +35,8 @@ class Control extends Component {
     takePic() {
         // The drawImage method takes an HTMLVideoElement and HTMLCanvasElement as arguments, so we pass them as refs here
         this.props.RecordImage(this.state.media, this.canvas, this.props.encoder)
+        this.props.ClearOverlay()
+        this.props.SetOverlay(true, 'overlay-flash')
     }
 
     createGif() {
@@ -107,7 +110,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ StartStream, StopStream, RecordImage, GenerateGif }, dispatch)
+    return bindActionCreators({ StartStream, StopStream, RecordImage, GenerateGif, SetOverlay, ClearOverlay }, dispatch)
 }
 
 const ControlContainer = connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Control)

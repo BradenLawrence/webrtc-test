@@ -2,7 +2,8 @@ import React, { Component }     from 'react'
 import { connect }              from 'react-redux'
 import { bindActionCreators }   from 'redux'
 import { Restart }              from '../actions'
-import { ShareModal }           from '../components/ShareModal';
+import { ShareModal }           from '../components/ShareModal'
+import { OverlayModal }         from '../components/OverlayModal'
 
 
 class Display extends Component {
@@ -31,6 +32,11 @@ class Display extends Component {
     render() {
         return(
             <div className="media-frame">
+                <OverlayModal
+                    isOpen      = { this.props.overlay.isOpen }
+                    type        = { this.props.overlay.type   }
+                    text        = { this.props.overlay.text   }
+                />
                 <ShareModal 
                     isOpen      = { this.props.active === 'gif' }
                     url         = { this.props.gif }
@@ -38,8 +44,8 @@ class Display extends Component {
                     closeText   = { 'Try Again' }
                 />
                 <video 
-                    ref         = { video => this.video = video } 
-                    width       = { this.props.constraints.width } 
+                    ref         = { video => this.video = video   } 
+                    width       = { this.props.constraints.width  } 
                     height      = { this.props.constraints.height } 
                     autoPlay    = "true" 
                 />
@@ -53,7 +59,8 @@ function mapStateToProps(state) {
         stream:         state.stream,
         constraints:    state.constraints,
         gif:            state.gif,
-        active:         state.active
+        active:         state.active,
+        overlay:        state.overlay
     }
 }
 

@@ -5,7 +5,9 @@ const START_STREAM  = 'START_STREAM',
       STOP_STREAM   = 'STOP_STREAM',
       RECORD_IMAGE  = 'RECORD_IMAGE',
       GENERATE_GIF  = 'GENERATE_GIF',
-      RESTART       = 'RESTART'
+      RESTART       = 'RESTART',
+      SET_OVERLAY   = 'SET_OVERLAY',
+      CLEAR_OVERLAY = 'CLEAR_OVERLAY'
 
 const StartStream = function(constraints) {
     const stream = navigator.mediaDevices.getUserMedia(constraints)
@@ -55,10 +57,26 @@ const Restart = function() {
     }
 }
 
+const SetOverlay = function(isOpen=false, type='', text='') {
+    const overlay = { isOpen, type, text }
+    return {
+        type:       SET_OVERLAY,
+        payload:    overlay
+    }
+}
+
+const ClearOverlay = function() {
+    return {
+        type:       CLEAR_OVERLAY
+    }
+}
+
 export {
     START_STREAM,   StartStream,
     STOP_STREAM,    StopStream,
     RECORD_IMAGE,   RecordImage,
     GENERATE_GIF,   GenerateGif,
-    RESTART,        Restart
+    RESTART,        Restart,
+    SET_OVERLAY,    SetOverlay,
+    CLEAR_OVERLAY,  ClearOverlay
 }
