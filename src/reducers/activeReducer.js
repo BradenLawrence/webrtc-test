@@ -1,8 +1,7 @@
 import { START_STREAM,
          STOP_STREAM,
          GENERATE_GIF,
-         RESTART, 
-         OPEN_MODAL} from '../actions'
+         RESTART} from '../actions'
 
 const activeReducer = function(state = null, action) {
     switch(action.type) {
