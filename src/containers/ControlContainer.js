@@ -13,6 +13,7 @@ class Control extends Component {
         super(props)
         this.start          = this.start.bind(this)
         this.stop           = this.stop.bind(this)
+        this.showCountdown  = this.showCountdown.bind(this)
         this.takePic        = this.takePic.bind(this)
         this.createGif      = this.createGif.bind(this)
         this.photoshoot     = this.photoshoot.bind(this)
@@ -32,11 +33,15 @@ class Control extends Component {
         this.props.StopStream(this.props.stream)
     }
 
+    showCountdown(count) {
+        this.props.SetOverlay(true, 'countdown', count)
+    }
+
     takePic() {
         // The drawImage method takes an HTMLVideoElement and HTMLCanvasElement as arguments, so we pass them as refs here
         this.props.RecordImage(this.state.media, this.canvas, this.props.encoder)
         this.props.ClearOverlay()
-        this.props.SetOverlay(true, 'overlay-flash')
+        this.props.SetOverlay(true, 'flash')
     }
 
     createGif() {
@@ -46,6 +51,10 @@ class Control extends Component {
     photoshoot(event) {
         event.preventDefault()
         const queue = [
+            () => { this.showCountdown('3') },
+            () => { this.showCountdown('2') },
+            () => { this.showCountdown('1') },
+            this.takePic,
             this.takePic,
             this.takePic,
             this.takePic,

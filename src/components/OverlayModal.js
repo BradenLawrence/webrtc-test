@@ -7,8 +7,8 @@ class OverlayModal extends Component {
         return(
             <Modal 
                 isOpen = { this.props.isOpen }
-                className="overlay-window"
-                overlayClassName={ this.props.type }
+                className={ 'overlay-window-' + this.props.type }
+                overlayClassName={ 'overlay-' + this.props.type }
             >
                 <p>{ this.props.text }</p>
             </Modal>

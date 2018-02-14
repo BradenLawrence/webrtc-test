@@ -101,7 +101,7 @@
   margin: 0 auto;
 }
 
-.overlay-window {
+.overlay-window-flash {
   display: none;
 }
 
@@ -128,6 +128,29 @@
   100% {
     opacity: 0;
   }
+}
+
+.overlay-window-countdown {
+  width: 800px;
+  height: 600px;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 100px;
+  font-weight: bold;
+  color: #efeeed;
+}
+
+.overlay-countdown {
+  position: absolute;
+  top: 95px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 800px;
+  height: 600px;
+  background-color: #00000052;
 }
 
 .overlay-off {
