@@ -51,7 +51,7 @@
   margin: 0 auto;
 }
 
-.Modal {
+.share-modal {
   position: absolute;
   top: 30px;
   left: 40px;
@@ -59,21 +59,18 @@
   bottom: 40px;
   width: 640px;
   height: 600px;
-  /* width: 350px;
-  height: 425px; */
   margin: 0 auto;
   padding: 20px;
   border-radius: .15rem;
   background-color: #ffffff;
 }
 
-.Modal > .frame {
+.share-modal > .frame {
   width: 100%;
   height: 480px;
-  background: #000000;
 }
 
-.Overlay {
+.share-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -102,4 +99,37 @@
 
 .button-restart > button {
   margin: 0 auto;
+}
+
+.overlay-window {
+  display: none;
+}
+
+.overlay-flash {
+  position: absolute;
+  top: 95px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 800px;
+  height: 600px;
+  background-color: #ffffff52;
+  animation: flash 0.5s;
+  animation-fill-mode:forwards;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.overlay-off {
+  display: none;
 }

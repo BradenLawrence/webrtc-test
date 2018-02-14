@@ -13,18 +13,15 @@ import { FacebookShareButton,
          EmailIcon }            from 'react-share'
 
 class ShareModal extends Component {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         return(
             <Modal 
                 isOpen = { this.props.isOpen }
-                className="Modal"
-                overlayClassName="Overlay"
+                className="share-modal"
+                overlayClassName="share-overlay"
             >
-                <img className="frame" src={ this.props.url } />
+                <img className="frame" src={ this.props.url } alt="" />
                 <div className="share-wrapper">
                     <TwitterShareButton     className="share-button" url={ this.props.url }>
                         <TwitterIcon    size={40} round={true} />
