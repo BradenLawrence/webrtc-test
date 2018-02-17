@@ -11,11 +11,11 @@ class ShareModal extends Component {
                 overlayClassName="share-overlay"
             >
                 <img className="frame" src={ this.props.url } alt="" />
-                <div className="button-restart">
+                <div className="share-controls">
                     <a href={ this.props.url } download="photobooth.gif">
                     <button className="button-download">Download</button>
                     </a><br/>
-                    <button className="button-restart" onClick= { this.props.onClose } >{ this.props.closeText }</button>
+                    <button className="button-cancel" onClick= { this.props.onClose } >{ this.props.closeText }</button>
                 </div>
             </Modal>
         )

@@ -1,21 +1,26 @@
+body {
+  background-color: #000000;
+}
+
 .App {
   /* text-align: center; */
 }
 
 .App-logo {
-  height: 35px;
+  height: 30px;
   float: left;
 }
 
 .App-header {
-  background-color: #222;
-  height: 35px;
-  padding: 20px;
+  background-color: #0f0f03;
+  border-bottom: 2px solid #bf874aaa;
+  height: 30px;
+  padding: 10px;
   color: white;
 }
 
 .App-title {
-  font-size: 1em;
+  font-size: .8em;
 }
 
 .App-intro {
@@ -24,17 +29,20 @@
 
 .media-frame {
   text-align: center;
-  width: 75%;
+  width: 100%;
+  background-color: #333333;
+  display: block;
+  box-shadow: 0px 0px 30px #000000 inset;
   margin: 0 auto;
+  padding: 20px 0;
 }
+
 
 .media-frame > video {
   width: 800px;
   height: 600px;
-  margin: 20px auto;
-  background-color: #333333;
-  display: block;
-  box-shadow: 0px 0px 30px #000000 inset;
+  margin: 0px auto;
+  background-color: #000000;
 }
 
 .media-frame > button {
@@ -47,13 +55,59 @@
 
 .controls {
   text-align: center;
-  width: 75%;
+  width: 100%;
+  border-top: 2px solid #bf874aaa;
   margin: 0 auto;
+}
+
+button {
+  font-weight: 300;
+  color: #efeeed;
+  border: 0;
+  text-align: center;
+  border-radius: .4rem;
+  margin-top: 15px;
+  padding: 5px 40px;
+  min-width: 150px;
+  outline: none;
+}
+button:hover {
+  cursor: pointer;
+}
+button:active, 
+button:focus {
+  outline: none;
+}
+
+a, a:active, a:focus {
+  outline: none;
+}
+
+.button-start,
+.button-photo,
+.button-download {
+  background-color: #02746e;
+  font-size: 1.8em;
+  padding: 10px;
+  width: 50%;
+  max-width: 800px;
+}
+.button-start:hover,
+.button-photo:hover,
+.button-download:hover {
+  background-color: #005c57;
+}
+
+.button-cancel {
+  background-color: #b03722;
+}
+.button-cancel:hover {
+  background-color: #451f14;
 }
 
 .share-modal {
   position: absolute;
-  top: 30px;
+  top: 54px;
   left: 40px;
   right: 40px;
   bottom: 40px;
@@ -62,7 +116,7 @@
   margin: 0 auto;
   padding: 20px;
   border-radius: .15rem;
-  background-color: #ffffff;
+  background-color: #efeeed;
 }
 
 .share-modal > .frame {
@@ -79,26 +133,8 @@
   background-color: #33333352;
 }
 
-.share-wrapper {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.share-controls {
   text-align: center;
-}
-
-.share-button {
-  display: inline-block;
-  margin: 0 10px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.button-restart {
-  width: 100%;
-  text-align: center;
-}
-
-.button-restart > button {
-  margin: 0 auto;
 }
 
 .overlay-window-flash {
@@ -107,7 +143,7 @@
 
 .overlay-flash {
   position: absolute;
-  top: 95px;
+  top: 72px;
   left: 0;
   right: 0;
   margin: auto;
@@ -144,7 +180,7 @@
 
 .overlay-countdown {
   position: absolute;
-  top: 95px;
+  top: 72px;
   left: 0;
   right: 0;
   margin: auto;

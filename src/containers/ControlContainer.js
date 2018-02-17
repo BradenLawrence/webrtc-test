@@ -81,18 +81,22 @@ class Control extends Component {
             case 'video':
                 return( 
                     <span>
-                        <button onClick = { this.stop       }>Cancel</button>
-                        <button onClick = { this.photoshoot }>Start Photobooth</button>
+                        <button className="button-photo"  onClick = { this.photoshoot }>Start Photobooth</button><br/>
+                        <button className="button-cancel" onClick = { this.stop       }>Cancel</button>
                     </span>
                 )
             case 'photoshoot':
                 return( 
                     null
                 )
+            case 'gif':
+                return( 
+                    null
+                )
             default:
                 return(
                     <span>
-                        <button onClick = { this.start }>Start recording</button>
+                        <button className="button-start" onClick = { this.start }>Start recording</button>
                     </span>
                 )
         }
