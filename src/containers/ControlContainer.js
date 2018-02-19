@@ -7,7 +7,8 @@ import { StartStream,
          StartPhotoshoot,
          GenerateGif,
          SetOverlay,
-         ClearOverlay }              from '../actions'
+         ClearOverlay }         from '../actions'
+import buttonImage              from '../images/kick-it.png'
 
 class Control extends Component {
     constructor(props) {
@@ -24,8 +25,7 @@ class Control extends Component {
         this.state = { media: undefined }
     }
 
-    start(event) {
-        event.preventDefault()
+    start() {
         this.props.StartStream(this.props.constraints)
     }
 
@@ -46,7 +46,7 @@ class Control extends Component {
     }
 
     createGif() {
-        this.props.GenerateGif(this.props.encoder)
+        this.props.GenerateGif(this.props.encoder);
     }
 
     photoshoot(event) {
@@ -56,6 +56,8 @@ class Control extends Component {
             () => { this.showCountdown('3') },
             () => { this.showCountdown('2') },
             () => { this.showCountdown('1') },
+            this.takePic,
+            this.takePic,
             this.takePic,
             this.takePic,
             this.takePic,
@@ -81,8 +83,7 @@ class Control extends Component {
             case 'video':
                 return( 
                     <span>
-                        <button className="button-photo"  onClick = { this.photoshoot }>Start Photobooth</button><br/>
-                        <button className="button-cancel" onClick = { this.stop       }>Cancel</button>
+                        <button className="button-photo"  onClick = { this.photoshoot }><img src={ buttonImage } alt="Start Photobooth" /></button>
                     </span>
                 )
             case 'photoshoot':
@@ -95,11 +96,13 @@ class Control extends Component {
                 )
             default:
                 return(
-                    <span>
-                        <button className="button-start" onClick = { this.start }>Start recording</button>
-                    </span>
+                    null
                 )
         }
+    }
+
+    componentDidMount() {
+        this.start()
     }
 
     render() {

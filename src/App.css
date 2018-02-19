@@ -1,5 +1,9 @@
 body {
-  background-color: #000000;
+  /* background-color: #000000; */
+  background: url("./images/background-medium.png") no-repeat center center fixed;
+  /* background-repeat: no-repeat;
+  background-position: center; */
+
 }
 
 .App {
@@ -12,11 +16,10 @@ body {
 }
 
 .App-header {
-  background-color: #0f0f03;
-  border-bottom: 2px solid #bf874aaa;
+  background-color: #3eb5cd;
   height: 30px;
   padding: 10px;
-  color: white;
+  color: #010300;
 }
 
 .App-title {
@@ -30,11 +33,11 @@ body {
 .media-frame {
   text-align: center;
   width: 100%;
-  background-color: #333333;
   display: block;
-  box-shadow: 0px 0px 30px #000000 inset;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px 0 0;
+  position: relative;
+  top: -50px;
 }
 
 
@@ -42,7 +45,13 @@ body {
   width: 800px;
   height: 600px;
   margin: 0px auto;
+  border: 5px solid #f9f8cf;
   background-color: #000000;
+  background-image: url("./images/video-background.png");
+  border-image-source: linear-gradient(#ddc624,  #f9f8cf);
+  border-image-slice: 20;
+  box-shadow: 0px 0px 20px #010300;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .media-frame > button {
@@ -54,10 +63,12 @@ body {
 }
 
 .controls {
+  position: relative;
+  top: -55px;
   text-align: center;
-  width: 100%;
-  border-top: 2px solid #bf874aaa;
+  width: 800px;
   margin: 0 auto;
+  height: 80px;
 }
 
 button {
@@ -65,11 +76,11 @@ button {
   color: #efeeed;
   border: 0;
   text-align: center;
-  border-radius: .4rem;
-  margin-top: 15px;
   padding: 5px 40px;
   min-width: 150px;
   outline: none;
+  box-shadow: 0px 0px 20px #010300;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 button:hover {
   cursor: pointer;
@@ -78,50 +89,50 @@ button:active,
 button:focus {
   outline: none;
 }
+button::-moz-focus-inner {
+  border: 0;
+}
 
 a, a:active, a:focus {
   outline: none;
 }
 
-.button-start,
 .button-photo,
-.button-download {
-  background-color: #02746e;
-  font-size: 1.8em;
-  padding: 10px;
-  width: 50%;
-  max-width: 800px;
+.button-download,
+.button-cancel {
+  background-color: #b81f59;
+  outline: 5px solid #f9f8cf;
+  width: 100%;
 }
-.button-start:hover,
 .button-photo:hover,
 .button-download:hover {
   background-color: #005c57;
 }
-
 .button-cancel {
-  background-color: #b03722;
+  background-color: #413740;
+  margin-top: 5px;
 }
 .button-cancel:hover {
-  background-color: #451f14;
+  background-color: #25252d;
 }
 
 .share-modal {
   position: absolute;
-  top: 54px;
+  top: 10px;
   left: 40px;
   right: 40px;
-  bottom: 40px;
-  width: 640px;
-  height: 600px;
+  width: 800px;
   margin: 0 auto;
   padding: 20px;
+  padding-bottom: 30px;
   border-radius: .15rem;
   background-color: #efeeed;
+  text-align: center;
 }
 
 .share-modal > .frame {
-  width: 100%;
-  height: 480px;
+  width: 800px;
+  /* height: 480px; */
 }
 
 .share-overlay {
@@ -130,10 +141,11 @@ a, a:active, a:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #33333352;
+  background-color: #333333cc;
 }
 
 .share-controls {
+  margin-top: 15px;
   text-align: center;
 }
 
@@ -143,7 +155,7 @@ a, a:active, a:focus {
 
 .overlay-flash {
   position: absolute;
-  top: 72px;
+  top: 25px;
   left: 0;
   right: 0;
   margin: auto;
@@ -180,7 +192,7 @@ a, a:active, a:focus {
 
 .overlay-countdown {
   position: absolute;
-  top: 72px;
+  top: 25px;
   left: 0;
   right: 0;
   margin: auto;
