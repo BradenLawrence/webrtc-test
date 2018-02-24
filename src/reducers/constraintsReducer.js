@@ -1,10 +1,15 @@
 
 
+// const defaultState = {
+//     video: {
+//         width:  800,
+//         height: 600
+//     },
+//     audio:  false
+// }
+
 const defaultState = {
-    video: {
-        width:  800,
-        height: 600
-    },
+    video: true,
     audio:  false
 }
 
