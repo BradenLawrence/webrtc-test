@@ -21,7 +21,6 @@ class Display extends Component {
     getVideo() {
         return this.video
     }
-    
     componentDidUpdate() {
         if(this.props.active === 'video') {
             this.video.srcObject = this.props.stream
@@ -31,7 +30,7 @@ class Display extends Component {
 
     render() {
         return(
-            <div className="media-frame">
+            <div className={ this.props.active === null ? 'media-frame inactive-video':'media-frame' } >
                 <OverlayModal
                     isOpen      = { this.props.overlay.isOpen }
                     type        = { this.props.overlay.type   }
