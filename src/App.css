@@ -386,3 +386,21 @@ a, a:active, a:focus {
     height: 768px;
   }
 }
+
+/* Huge devices (large desktops, 1500px and up) */
+@media (min-width: 1500px) {
+  .App-logo {
+    background-image: url(./images/logo.png);
+    height: 33px;
+    width: 200px;
+    float: left;
+  }
+  .App-header {
+    height: 30px;
+    padding: 10px;
+  }
+  .media-frame {
+    position: relative;
+    top: -60px;
+  }
+}
