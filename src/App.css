@@ -33,9 +33,11 @@ body {
 }
 
 .inactive-video {
-  height: 480px;
+  width: 100vmin;
+  height: 75vmin;
   background-color: #000000;
   background: url("./images/video-background.png") no-repeat top center fixed;
+  background-size: 100%;
 }
 
 .media-frame {
