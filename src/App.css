@@ -61,15 +61,18 @@ video {
   text-align: center;
   width: 100%;
   margin: 0 auto;
-  height: 80px;
 }
 
 button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   font-weight: 300;
   color: #efeeed;
   border: 0;
   text-align: center;
-  padding: 5px 40px;
+  padding: 1vh 40px;
   min-width: 150px;
   outline: none;
   box-shadow: 0px 0px 20px #010300;
@@ -84,6 +87,9 @@ button:focus {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button > img {
+  height: 4vh;
 }
 
 a, a:active, a:focus {
@@ -222,6 +228,9 @@ a, a:active, a:focus {
   .controls {
     width: 640px;
     margin-top: -10px;
+  }
+  button {
+    position: initial;
   }
   .overlay-flash {
     position: absolute;
