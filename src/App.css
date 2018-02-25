@@ -48,7 +48,7 @@ body {
 
 video {
   width: 100vw;
-  height: 75vmin;
+  height: auto;
   background: #000000;
 }
 
