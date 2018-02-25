@@ -109,7 +109,6 @@ class Control extends Component {
     render() {
         return(
             <div className="controls">
-                { this.renderControls() }
                 <div className="canvas-frame">
                     <canvas 
                         ref     = { canvas => this.canvas = canvas }
@@ -117,6 +116,7 @@ class Control extends Component {
                         height  = { this.props.stream !== null ? this.props.stream.getVideoTracks()[0].getSettings().height : 0 } 
                     />
                 </div>
+                { this.renderControls() }
             </div>
         )
         

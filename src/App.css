@@ -60,7 +60,7 @@ video {
 }
 
 .canvas-frame {
-  display: none;
+  /* display: none; */
 }
 
 .controls {
@@ -71,6 +71,7 @@ video {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 100;
 }
 
 button {
