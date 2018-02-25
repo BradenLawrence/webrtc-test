@@ -10,6 +10,9 @@ import { OverlayModal }         from '../components/OverlayModal'
 class Display extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            resolution: null
+        }
         this.tryAgain = this.tryAgain.bind(this)
         this.getVideo = this.getVideo.bind(this)
         this.detectResolution = this.detectResolution.bind(this)
@@ -36,15 +39,17 @@ class Display extends Component {
         } else {
             resolution.orientation = 'square'
         }
-        return resolution
+        this.setState({ resolution })
     }
 
+    componentWillMount() {
+        this.detectResolution()
+    }
     componentDidMount() {
-        const resolution = this.detectResolution()
         this.props.SetConstraints({
             video: {
-                height: { ideal: resolution.height },
-                width:  { ideal: resolution.width }
+                height: { ideal: this.state.resolution.height },
+                width:  { ideal: this.state.resolution.width }
             }
         })
     }
@@ -76,6 +81,8 @@ class Display extends Component {
                     height      = { this.props.stream !== null ? this.props.stream.getVideoTracks()[0].getSettings().height : 0 } 
                     autoPlay    = "true" 
                 />
+                <p>Height: { this.state.resolution.height }</p><br/>
+                <p>Width: { this.state.resolution.width }</p>
             </div>
         )
     }
