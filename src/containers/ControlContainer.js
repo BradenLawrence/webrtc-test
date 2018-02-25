@@ -21,6 +21,7 @@ class Control extends Component {
         this.photoshoot     = this.photoshoot.bind(this)
         this.setVideo       = this.setVideo.bind(this)
         this.renderControls = this.renderControls.bind(this)
+        this.renderCanvas   = this.renderCanvas.bind(this)
 
         this.state = { media: undefined }
     }
@@ -40,9 +41,6 @@ class Control extends Component {
 
     takePic() {
         // The drawImage method takes an HTMLVideoElement and HTMLCanvasElement as arguments, so we pass them as refs here
-        this.canvas.width = window.innerWidth
-        this.canvas.height = window.innerHeight
-        console.log(this.canvas)
         this.props.RecordImage(this.state.media, this.canvas, this.props.encoder)
         this.props.ClearOverlay()
         this.props.SetOverlay(true, 'flash')
@@ -105,6 +103,30 @@ class Control extends Component {
         }
     }
 
+    renderCanvas() {
+        let width = window.innerWidth
+        let height = window.innerHeight
+        if(window.innerWidth >= 768) {
+            width = 640
+            height = 480
+        } else if(window.innerWidth >= 1100) {
+            width = 800
+            height = 600
+        } else if(window.innerWidth >= 1300) {
+            width = 1024
+            height = 768
+        }
+        return (
+            <div className="canvas-frame">
+                <canvas 
+                    ref     = { canvas => this.canvas = canvas }
+                    width   = { width  } 
+                    height  = { height }
+                />
+            </div>
+        )
+    }
+
     componentDidMount() {
         this.start()
     }
@@ -112,16 +134,8 @@ class Control extends Component {
     render() {
         return(
             <div className="controls">
-                <div className="canvas-frame">
-                    <canvas 
-                        ref     = { canvas => this.canvas = canvas }
-                        width   = { this.props.stream !== null ? this.state.media.width : 0  } 
-                        height  = { this.props.stream !== null ? this.state.media.height : 0 }
-                        // width   = { this.props.stream !== null ? this.props.stream.getVideoTracks()[0].getSettings().width : 0  } 
-                        // height  = { this.props.stream !== null ? this.props.stream.getVideoTracks()[0].getSettings().height : 0 } 
-                    />
-                </div>
                 { this.renderControls() }
+                { this.renderCanvas() }
             </div>
         )
         
