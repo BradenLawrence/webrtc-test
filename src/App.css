@@ -51,6 +51,7 @@ body {
 video {
   width: 100vw;
   height: auto;
+  max-height: 96vh;
   background: #000000;
 }
 
