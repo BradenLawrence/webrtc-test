@@ -8,7 +8,8 @@ const START_STREAM      = 'START_STREAM',
       GENERATE_GIF      = 'GENERATE_GIF',
       RESTART           = 'RESTART',
       SET_OVERLAY       = 'SET_OVERLAY',
-      CLEAR_OVERLAY     = 'CLEAR_OVERLAY'
+      CLEAR_OVERLAY     = 'CLEAR_OVERLAY',
+      SET_CONSTRAINTS   = 'SET_CONSTRAINTS'
 
 const StartStream = function(constraints) {
     const stream = navigator.mediaDevices.getUserMedia(constraints)
@@ -78,6 +79,13 @@ const ClearOverlay = function() {
     }
 }
 
+const SetConstraints = function(constraints) {
+    return {
+        type:       SET_CONSTRAINTS,
+        payload:    constraints
+    }
+}
+
 export {
     START_STREAM,       StartStream,
     STOP_STREAM,        StopStream,
@@ -86,5 +94,6 @@ export {
     GENERATE_GIF,       GenerateGif,
     RESTART,            Restart,
     SET_OVERLAY,        SetOverlay,
-    CLEAR_OVERLAY,      ClearOverlay
+    CLEAR_OVERLAY,      ClearOverlay,
+    SET_CONSTRAINTS,    SetConstraints
 }
