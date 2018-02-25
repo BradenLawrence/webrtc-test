@@ -46,6 +46,7 @@ class Control extends Component {
     }
 
     createGif() {
+        this.props.ClearOverlay()
         this.props.GenerateGif(this.props.encoder);
     }
 
