@@ -1,6 +1,7 @@
 body {
   /* background-color: #000000; */
-  background: url("./images/background-medium.png") no-repeat center center fixed;
+  background: url("./images/video-background.png") no-repeat center center fixed;
+  background-color: #25252d;
   /* background-repeat: no-repeat;
   background-position: center; */
 
@@ -13,15 +14,16 @@ body {
 .App-logo {
   background-image: url(./images/logo.png);
   background-size: 100%;
-  height: 15px;
-  width: 100px;
+  background-repeat: no-repeat;
+  height: 2vh;
+  width: 13vh;
   float: left;
 }
 
 .App-header {
-  height: 15px;
+  height: 2vh;
   background-color: #3eb5cd;
-  padding: 10px;
+  padding: 1vh;
   color: #010300;
 }
 
@@ -49,6 +51,7 @@ body {
 video {
   width: 100vw;
   height: auto;
+  max-height: 83vh;
   background: #000000;
 }
 
@@ -68,6 +71,7 @@ video {
   bottom: 0;
   left: 0;
   right: 0;
+  height: 13vh;
 }
 
 button {
@@ -90,9 +94,6 @@ button:focus {
 }
 button::-moz-focus-inner {
   border: 0;
-}
-button > img {
-  /* height: 8vh; */
 }
 
 a, a:active, a:focus {
@@ -152,12 +153,12 @@ a, a:active, a:focus {
 
 .overlay-flash {
   position: absolute;
-  top: 35px;
+  top: 4vh;
   left: 0;
   right: 0;
   margin: auto;
-  width: 100vmin;
-  height: 75vmin;
+  width: 100vw;
+  height: 96vh;
   background-color: #ffffff52;
   animation: flash 0.5s;
   animation-fill-mode:forwards;
@@ -176,8 +177,8 @@ a, a:active, a:focus {
 }
 
 .overlay-window-countdown {
-  width: 100vmin;
-  height: 75vmin;
+  width: 100vw;
+  height: 96vh;
   display: flex;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
@@ -189,12 +190,12 @@ a, a:active, a:focus {
 
 .overlay-countdown {
   position: absolute;
-  top: 35px;
+  top: 4vh;
   left: 0;
   right: 0;
   margin: auto;
-  width: 100vmin;
-  height: 75vmin;
+  width: 100vw;
+  height: 96vh;
   background-color: #00000052;
 }
 
@@ -208,6 +209,9 @@ a, a:active, a:focus {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+  body {
+    background: url("./images/background-medium.png") no-repeat center center fixed;
+  }
   .App-logo {
     height: 33px;
     width: 200px;
