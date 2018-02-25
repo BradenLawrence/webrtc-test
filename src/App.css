@@ -59,6 +59,10 @@ video {
   margin: 0 10px;
 }
 
+.canvas-frame {
+  display: none;
+}
+
 .controls {
   text-align: center;
   width: 100%;
