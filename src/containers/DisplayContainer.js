@@ -46,12 +46,24 @@ class Display extends Component {
         this.detectResolution()
     }
     componentDidMount() {
-        this.props.SetConstraints({
-            video: {
-                height: { ideal: this.state.resolution.height },
-                width:  { ideal: this.state.resolution.width }
-            }
-        })
+        let constraints = null
+        switch(this.state.resolution.orientation) {
+            case 'vertical':
+                constraints = {
+                    video: {
+                        height: { ideal: this.state.resolution.width },
+                        width:  { ideal: this.state.resolution.height }
+                    }
+                }
+            default:
+                constraints = {
+                    video: {
+                        height: { ideal: this.state.resolution.height },
+                        width:  { ideal: this.state.resolution.width }
+                    }
+                }
+        }
+        this.props.SetConstraints(constraints)
     }
 
     componentDidUpdate() {
