@@ -51,7 +51,6 @@ body {
 video {
   width: 100vw;
   height: auto;
-  max-height: 83vh;
   background: #000000;
 }
 
@@ -159,7 +158,7 @@ a, a:active, a:focus {
   right: 0;
   margin: auto;
   width: 100vw;
-  height: 95vh;
+  height: 90vh;
   background-color: #ffffff52;
   animation: flash 0.5s;
   animation-fill-mode:forwards;
@@ -179,7 +178,7 @@ a, a:active, a:focus {
 
 .overlay-window-countdown {
   width: 100vw;
-  height: 95vh;
+  height: 90vh;
   display: flex;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
@@ -196,7 +195,7 @@ a, a:active, a:focus {
   right: 0;
   margin: auto;
   width: 100vw;
-  height: 95vh;
+  height: 90vh;
   background-color: #00000052;
 }
 
