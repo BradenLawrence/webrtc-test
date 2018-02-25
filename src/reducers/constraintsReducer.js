@@ -1,19 +1,14 @@
 import { SET_CONSTRAINTS }  from '../actions'
 
 const defaultState = {
-    video: {
-        width:  { ideal: 800 },
-        height: { ideal: 600 }
-    },
+    video: true,
     audio:  false
 }
 
 const constraintsReducer = function(state = defaultState, action) {
     switch(action.type) {
         case SET_CONSTRAINTS:
-            const newConstraints =  { ...state, ...action.payload }
-            console.log(newConstraints)
-            return newConstraints
+            return { ...state, ...action.payload }
         default:
             return state
     }
