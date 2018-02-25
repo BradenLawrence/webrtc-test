@@ -127,7 +127,8 @@ a, a:active, a:focus {
 }
 
 .share-modal > .frame {
-  width: 95vw;
+  max-width: 95vw;
+  max-height: 75vh;
   padding-top: 2vh;
 }
 
