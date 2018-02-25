@@ -61,6 +61,8 @@ video {
 
 .canvas-frame {
   display: none;
+  width: 100vw;
+  height: 96vh;
 }
 
 .controls {
@@ -157,7 +159,7 @@ a, a:active, a:focus {
   right: 0;
   margin: auto;
   width: 100vw;
-  height: 96vh;
+  height: 95vh;
   background-color: #ffffff52;
   animation: flash 0.5s;
   animation-fill-mode:forwards;
@@ -177,7 +179,7 @@ a, a:active, a:focus {
 
 .overlay-window-countdown {
   width: 100vw;
-  height: 96vh;
+  height: 95vh;
   display: flex;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
@@ -194,7 +196,7 @@ a, a:active, a:focus {
   right: 0;
   margin: auto;
   width: 100vw;
-  height: 96vh;
+  height: 95vh;
   background-color: #00000052;
 }
 
