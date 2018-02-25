@@ -111,9 +111,9 @@ class Control extends Component {
                 { this.renderControls() }
                 <div className="canvas-frame">
                     <canvas 
-                        ref     = { canvas => this.canvas = canvas      }
-                        width   = { this.props.constraints.video.width  } 
-                        height  = { this.props.constraints.video.height } 
+                        ref     = { canvas => this.canvas = canvas }
+                        width   = { this.props.stream !== null ? this.props.stream.getVideoTracks()[0].getSettings().width : 0  } 
+                        height  = { this.props.stream !== null ? this.props.stream.getVideoTracks()[0].getSettings().height : 0 } 
                     />
                 </div>
             </div>

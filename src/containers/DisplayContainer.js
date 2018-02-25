@@ -44,8 +44,8 @@ class Display extends Component {
                 />
                 <video 
                     ref         = { video => this.video = video   } 
-                    width       = { this.props.constraints.width  } 
-                    height      = { this.props.constraints.height } 
+                    width       = { this.props.stream !== null ? this.props.stream.getVideoTracks()[0].getSettings().width : 0  } 
+                    height      = { this.props.stream !== null ? this.props.stream.getVideoTracks()[0].getSettings().height : 0 } 
                     autoPlay    = "true" 
                 />
             </div>
