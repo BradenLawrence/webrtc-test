@@ -40,6 +40,9 @@ class Control extends Component {
 
     takePic() {
         // The drawImage method takes an HTMLVideoElement and HTMLCanvasElement as arguments, so we pass them as refs here
+        this.canvas.width = window.innerWidth
+        this.canvas.height = window.innerHeight
+        console.log(this.canvas)
         this.props.RecordImage(this.state.media, this.canvas, this.props.encoder)
         this.props.ClearOverlay()
         this.props.SetOverlay(true, 'flash')
