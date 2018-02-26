@@ -27,7 +27,10 @@ class Control extends Component {
     }
 
     start() {
-        navigator.mediaDevices.getUserMedia(this.props.constraints)
+        navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio:  false
+        })
             .then( stream => {
                 this.props.StartStream(stream)
             }).catch( error => {
