@@ -50,6 +50,12 @@ video {
   height: auto;
   max-height: 96vh;
 }
+/* Hide play button on video element for iOS */
+*::-webkit-media-controls-start-playback-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
 
 .media-frame > button {
   margin: 0 10px;
