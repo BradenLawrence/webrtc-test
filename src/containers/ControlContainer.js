@@ -27,15 +27,15 @@ class Control extends Component {
     }
 
     start() {
-        navigator.mediaDevices.getUserMedia({
-            video: true,
-            audio:  false
-        })
-            .then( stream => {
-                this.props.StartStream(stream)
-            }).catch( error => {
-                console.log(error)
-            })
+        const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)
+        if(!iOS) {
+            navigator.mediaDevices.getUserMedia(this.props.constraints)
+                .then( stream => {
+                    this.props.StartStream(stream)
+                }).catch( error => {
+                    console.log(error)
+                })
+        }
     }
 
     stop(event) {
