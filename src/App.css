@@ -1,6 +1,6 @@
 body {
   /* background-color: #000000; */
-  background: url("./images/video-background.png") no-repeat center center fixed;
+  background: url("./images/video-background.png") no-repeat top center fixed;
   background-size: 100%;
   background-color: #25252d;
   /* background-repeat: no-repeat;
