@@ -36,11 +36,7 @@ body {
 }
 
 .inactive-video {
-  width: 100vmin;
-  height: 75vmin;
-  background-color: #000000;
-  background: url("./images/video-background.png") no-repeat top center fixed;
-  background-size: 100%;
+
 }
 
 .media-frame {
@@ -52,7 +48,6 @@ video {
   width: 100vw;
   height: auto;
   max-height: 96vh;
-  background: #000000;
 }
 
 .media-frame > button {
@@ -219,9 +214,18 @@ a, a:active, a:focus {
   .App-header {
     height: 30px;
   }
-  .inactive-video {
+  /* .inactive-video {
     background: none;
+  } */
+
+  .inactive-video {
+    width: 100vmin;
+    height: 75vmin;
+    background-color: #000000;
+    background: url("./images/video-background.png") no-repeat top center fixed;
+    background-size: 100%;
   }
+
   .media-frame {
     margin: 0 auto;
     padding: 20px 0 0;

@@ -11,8 +11,8 @@ const START_STREAM      = 'START_STREAM',
       CLEAR_OVERLAY     = 'CLEAR_OVERLAY',
       SET_CONSTRAINTS   = 'SET_CONSTRAINTS'
 
-const StartStream = function(constraints) {
-    const stream = navigator.mediaDevices.getUserMedia(constraints)
+const StartStream = function(stream) {
+    // const stream = navigator.mediaDevices.getUserMedia(constraints)
     return {
         type:       START_STREAM,
         payload:    stream
