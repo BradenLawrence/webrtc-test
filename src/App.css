@@ -76,7 +76,7 @@ canvas {
 }
 
 button {
-  font-weight: 300;
+  font-weight: 400;
   color: #efeeed;
   border: 0;
   text-align: center;
@@ -103,12 +103,17 @@ a, a:active, a:focus {
 
 .button-photo,
 .button-download,
-.button-cancel {
+.button-cancel,
+.button-start {
   background-color: #b81f59;
   width: 100%;
 }
+.button-start {
+  font-size: 1em;
+}
 .button-photo:hover,
-.button-download:hover {
+.button-download:hover,
+.button-start:hover {
   background-color: #005c57;
 }
 .button-cancel {
@@ -252,23 +257,22 @@ a, a:active, a:focus {
   }
   .controls {
     position: absolute;
-    top: 550px;
+    top: 570px;
     left: 0;
     right: 0;
-    width: 640px;
+    width: 520px;
   }
   button {
     height: auto;
   }
   .button-photo,
   .button-cancel,
-  .button-download {
-    outline: 5px solid #f9f8cf;
+  .button-download,
+  .button-start {
     padding: 1vh;
   }
   .button-download {
     height: 8vh;
-    padding: 1vh;
   }
   .overlay-flash {
     position: absolute;
@@ -350,6 +354,12 @@ a, a:active, a:focus {
   .App-header {
     height: 70px;
   }
+
+  .inactive-video {
+    width: 800px;
+    height: 600px;
+  }
+
   .media-frame {
     position: relative;
     top: -100px;
@@ -363,7 +373,7 @@ a, a:active, a:focus {
   }
   .controls {
     position: absolute;
-    top: 610px;
+    top: 595px;
     left: 0;
     right: 0;
   }
@@ -414,13 +424,17 @@ a, a:active, a:focus {
 
 /* Extra large devices (large desktops, 1300px and up) */
 @media (min-width: 1300px) {
+  .inactive-video {
+    width: 1024px;
+    height: 768px;
+  }
   video {
     width: 1024px;
     height: 768px;
     background-position-y: 20px;
   }
   .controls {
-    top: 780px;
+    top: 765px;
   }
   .overlay-flash {
     top: 15px;

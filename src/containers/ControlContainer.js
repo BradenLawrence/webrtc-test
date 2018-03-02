@@ -106,7 +106,9 @@ class Control extends Component {
                 )
             default:
                 return(
-                    null
+                    <span>
+                        <button className="button-start"  onClick = { this.start }>Start Recording</button>
+                    </span>
                 )
         }
     }
