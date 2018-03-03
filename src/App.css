@@ -226,41 +226,43 @@ a, a:active, a:focus {
   .App-header {
     height: 30px;
   }
-  /* .inactive-video {
-    background: none;
-  } */
 
   .inactive-video {
-    width: 100vmin;
-    height: 75vmin;
-    background-color: #000000;
+    width: 80vmin;
+    height: 60vmin;
     background: url("./images/video-background.png") no-repeat top center fixed;
-    background-size: 100%;
+    background-color: #000000;
+    background-size: 100vmin;
   }
 
   .media-frame {
     margin: 0 auto;
-    padding: 20px 0 0;
+    padding: 2vmin 0 0;
     background: none;
   }
   video {
-    width: 640px;
-    height: 480px;
+    position: absolute;
+    top: 9vmin;
+    left: 0;
+    right: 0;
+    width: 80vmin;
+    height: 60vmin;
     margin: 0px auto;
-    border: 5px solid #f9f8cf;
-    background-color: #000000;
+    border: 1vmin solid #f9f8cf;
     background: url("./images/video-background.png") no-repeat top center fixed;
     border-image-source: linear-gradient(#ddc624,  #f9f8cf);
     border-image-slice: 20;
+    background-color: #25252d;
     box-shadow: 0px 0px 20px #010300;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
   .controls {
     position: absolute;
-    top: 570px;
+    top: 75vh;
     left: 0;
     right: 0;
-    width: 520px;
+    width: 60vmin;
+    min-width: 200px;
   }
   button {
     height: auto;
@@ -273,22 +275,23 @@ a, a:active, a:focus {
   }
   .button-download {
     height: 8vh;
+    min-height: 60px;
   }
   .overlay-flash {
     position: absolute;
-    top: 75px;
+    top: 10vmin;
     left: 0;
     right: 0;
     margin: auto;
-    width: 640px;
-    height: 480px;
+    width: 80vmin;
+    height: 60vmin;
     background-color: #ffffff52;
     animation: flash 0.5s;
     animation-fill-mode:forwards;
   }
   .overlay-window-countdown {
-    width: 640px;
-    height: 480px;
+    width: 80vmin;
+    height: 60vmin;
     display: flex;
     justify-content: center; /* align horizontal */
     align-items: center; /* align vertical */
@@ -300,24 +303,25 @@ a, a:active, a:focus {
   
   .overlay-countdown {
     position: absolute;
-    top: 75px;
+    top: 10vmin;
     left: 0;
     right: 0;
     margin: auto;
-    width: 640px;
-    height: 480px;
+    width: 80vmin;
+    height: 60vmin;
     background-color: #00000052;
   }
   .share-modal {
     position: absolute;
-    top: 30px;
+    top: 2vmin;
     left: 40px;
     right: 40px;
-    width: 640px;
+    width: 80vmin;
     height: auto;
+    max-height: 95vh;
     margin: 0 auto;
-    padding: 20px;
-    padding-bottom: 60px;
+    padding: 3vmin;
+    padding-bottom: 4vmin;
     border-radius: .15rem;
     background-color: #efeeed;
     text-align: center;
@@ -326,7 +330,7 @@ a, a:active, a:focus {
   .share-modal > .frame {
     max-width: none;
     max-height: none;
-    width: 640px;
+    width: 80vmin;
   }
   .share-overlay {
     position: fixed;
@@ -338,14 +342,14 @@ a, a:active, a:focus {
   }
   
   .share-controls {
-    margin-top: 15px;
+    margin-top: 1vmin;
     text-align: center;
-    width: 640px;
+    width: 80vmin;
   }
 }
 
-/* Large devices (desktops, 1100px and up) */
-@media (min-width: 1100px) { 
+/* Large devices (desktops, 1150px and up) */
+@media (min-width: 1160px) { 
   .App-logo {
     background-image: url(./images/logo-stacked.png);
     height: 69px;
@@ -356,55 +360,43 @@ a, a:active, a:focus {
   }
 
   .inactive-video {
-    width: 800px;
-    height: 600px;
+    width: 102vmin;
+    height: 77vmin;
   }
 
-  .media-frame {
-    position: relative;
-    top: -100px;
-  }
   video {
-    width: 800px;
-    height: 600px;
+    position: absolute;
+    top: 1vh;
+    width: 102vmin;
+    height: 77vmin;
     background-repeat: repeat-x;
     background-position-y: 15px;
     background-color: #25252d;
   }
   .controls {
     position: absolute;
-    top: 595px;
+    top: 77vmin;
     left: 0;
     right: 0;
   }
   .overlay-flash {
-    top: 15px;
-    width: 800px;
-    height: 600px;
+    top: 2vmin;
+    width: 102vmin;
+    height: 77vmin;
   }
   .overlay-window-countdown {
-    width: 800px;
-    height: 600px;
+    width: 102vmin;
+    height: 77vmin;
   }
   
   .overlay-countdown {
-    top: 15px;
-    width: 800px;
-    height: 600px;
+    top: 2vmin;
+    width: 102vmin;
+    height: 77vmin;
   }
 
   .share-modal {
-    position: absolute;
-    top: 10px;
-    left: 40px;
-    right: 40px;
-    width: 800px;
-  }
-  
-  .share-modal > .frame {
-    max-width: none;
-    max-height: none;
-    width: 800px;
+    top: 1vmin;
   }
   
   .share-overlay {
@@ -422,39 +414,8 @@ a, a:active, a:focus {
   }
 }
 
-/* Extra large devices (large desktops, 1300px and up) */
-@media (min-width: 1300px) {
-  .inactive-video {
-    width: 1024px;
-    height: 768px;
-  }
-  video {
-    width: 1024px;
-    height: 768px;
-    background-position-y: 20px;
-  }
-  .controls {
-    top: 765px;
-  }
-  .overlay-flash {
-    top: 15px;
-    width: 1024px;
-    height: 768px;
-  }
-  .overlay-window-countdown {
-    width: 1024px;
-    height: 768px;
-  }
-  
-  .overlay-countdown {
-    top: 15px;
-    width: 1024px;
-    height: 768px;
-  }
-}
-
-/* Huge devices (large desktops, 1500px and up) */
-@media (min-width: 1500px) {
+/* Extra large devices (large desktops, 1360px and up) */
+@media (min-width: 1360px) {
   .App-logo {
     background-image: url(./images/logo.png);
     height: 33px;
@@ -464,9 +425,5 @@ a, a:active, a:focus {
   .App-header {
     height: 30px;
     padding: 10px;
-  }
-  .media-frame {
-    position: relative;
-    top: -60px;
   }
 }
