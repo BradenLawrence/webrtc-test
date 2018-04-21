@@ -13,6 +13,8 @@ const START_STREAM      = 'START_STREAM',
 
 const StartStream = function(stream) {
     // const stream = navigator.mediaDevices.getUserMedia(constraints)
+    // Moved this logic to the control container in order to allow the use of promises
+    // Should use Redux Thunk in the future
     return {
         type:       START_STREAM,
         payload:    stream

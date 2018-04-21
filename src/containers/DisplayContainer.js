@@ -4,6 +4,7 @@ import { bindActionCreators }   from 'redux'
 import { Restart }              from '../actions'
 import { ShareModal }           from '../components/ShareModal'
 import { OverlayModal }         from '../components/OverlayModal'
+import { ControlContainer }     from '../containers/ControlContainer'
 
 
 class Display extends Component {
@@ -25,7 +26,6 @@ class Display extends Component {
     componentDidUpdate() {
         if(this.props.active === 'video') {
             this.video.srcObject = this.props.stream
-            this.props.initMedia()
         }
     }
 
@@ -49,6 +49,9 @@ class Display extends Component {
                     height      = { this.props.stream !== null ? this.props.stream.getVideoTracks()[0].getSettings().height : 0 } 
                     autoPlay    = "true" 
                 />
+                <ControlContainer 
+                    media       = { this.video }
+                />
             </div>
         )
     }
@@ -68,6 +71,6 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ Restart }, dispatch)
 }
 
-const DisplayContainer = connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Display)
+const DisplayContainer = connect(mapStateToProps, mapDispatchToProps)(Display)
 
 export { DisplayContainer }

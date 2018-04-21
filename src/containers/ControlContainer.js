@@ -19,11 +19,8 @@ class Control extends Component {
         this.takePic        = this.takePic.bind(this)
         this.createGif      = this.createGif.bind(this)
         this.photoshoot     = this.photoshoot.bind(this)
-        this.setVideo       = this.setVideo.bind(this)
         this.renderControls = this.renderControls.bind(this)
         this.renderCanvas   = this.renderCanvas.bind(this)
-
-        this.state = { media: undefined }
     }
 
     start() {
@@ -49,7 +46,7 @@ class Control extends Component {
 
     takePic() {
         // The drawImage method takes an HTMLVideoElement and HTMLCanvasElement as arguments, so we pass them as refs here
-        this.props.RecordImage(this.state.media, this.canvas, this.props.encoder)
+        this.props.RecordImage(this.props.media, this.canvas, this.props.encoder)
         this.props.ClearOverlay()
         this.props.SetOverlay(true, 'flash')
     }
@@ -72,7 +69,6 @@ class Control extends Component {
             this.takePic,
             this.takePic,
             this.takePic,
-            this.takePic,
             this.createGif
         ]
         const timer = setInterval( () => {
@@ -81,11 +77,7 @@ class Control extends Component {
             } else {
                 return window.clearInterval(timer)
             }
-        }, 1000)
-    }
-
-    setVideo(media) {
-        this.setState({ media })
+        }, 500)
     }
 
     renderControls() {
@@ -173,6 +165,6 @@ function mapDispatchToProps(dispatch) {
     }, dispatch)
 }
 
-const ControlContainer = connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Control)
+const ControlContainer = connect(mapStateToProps, mapDispatchToProps)(Control)
 
 export { ControlContainer }
