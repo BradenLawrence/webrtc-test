@@ -1,22 +1,35 @@
 import React, { Component }     from 'react'
 import Modal                    from 'react-modal'
-import downloadImage            from '../images/download.png'
+import downloadImage            from '../images/save.png'
 
 class ShareModal extends Component {
     constructor(props) {
         super(props)
         this.downloadFile = this.downloadFile.bind(this)
+        this.state = { input: "Photowave" }
     }
 
+    onInputChange(input) {
+        this.setState({ input })
+    }
+
+    escapeText(text) {
+        return (
+            text
+            .replace(/@/g,'_at_')
+            .replace(/\./g,'_dot_')
+        )
+    }
 
     downloadFile() {
-        var filePath = this.props.url
-        var a = document.createElement('a')
+        let filePath = this.props.url
+        let a = document.createElement('a')
         a.href = filePath
-        a.download = 'photobooth.gif'
+        a.download = this.escapeText(this.state.input) + "_" + Date.now() + ".gif"
         document.body.appendChild(a)
         a.click()
-        document.body.removeChild(a)  
+        document.body.removeChild(a)
+        this.setState({ input: "Photowave" }) 
     }
 
     render() {
@@ -28,6 +41,8 @@ class ShareModal extends Component {
             >
                 <img className="frame" src={ this.props.url } alt="" />
                 <div className="share-controls">
+                    <p>Remember this moment</p>
+                    <p>Email: <input className="input-email" placeholder="ex: yourname@example.com" onChange={ event => this.onInputChange(event.target.value) } /></p>
                     <button className="button-download" onClick= { this.downloadFile } ><img src={ downloadImage } alt="Download" /></button><br/>
                     <button className="button-cancel" onClick= { this.props.onClose } >{ this.props.closeText }</button>
                 </div>

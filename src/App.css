@@ -61,7 +61,7 @@ video {
   margin: 0 10px;
 }
 
-canvas {
+.canvas-frame {
   display: none;
 }
 
@@ -344,7 +344,7 @@ a, a:active, a:focus {
   .share-controls {
     margin-top: 1vmin;
     text-align: center;
-    width: 80vmin;
+    width: 50vmin;
   }
 }
 

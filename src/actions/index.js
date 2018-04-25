@@ -29,7 +29,7 @@ const StopStream = function(stream) {
     }
 }
 
-const RecordImage = function(video, canvas, encoder) {
+const RecordImage = function(video, canvas, encoder, overlay) {
     if(!encoder) {
         encoder = new GifReadWrite.Encoder()
         encoder.setRepeat(0)
@@ -37,7 +37,12 @@ const RecordImage = function(video, canvas, encoder) {
         encoder.start()
     }
     const context = canvas.getContext('2d')
-    context.drawImage(video, 0, 0)
+    if(video) {
+        context.drawImage(video, 0, 0)
+    }
+    if(overlay) {
+        context.drawImage(overlay, 5, 5)
+    }
     encoder.addFrame(context)
     return {
         type:       RECORD_IMAGE,

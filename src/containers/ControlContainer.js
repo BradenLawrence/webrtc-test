@@ -9,6 +9,7 @@ import { StartStream,
          SetOverlay,
          ClearOverlay }         from '../actions'
 import buttonImage              from '../images/kick-it.png'
+import overlayImage             from '../images/BioBright-Logo-Horizontal.png'
 
 class Control extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class Control extends Component {
         this.photoshoot     = this.photoshoot.bind(this)
         this.renderControls = this.renderControls.bind(this)
         this.renderCanvas   = this.renderCanvas.bind(this)
+        this.renderOverlay  = this.renderOverlay.bind(this)
     }
 
     start() {
@@ -46,7 +48,7 @@ class Control extends Component {
 
     takePic() {
         // The drawImage method takes an HTMLVideoElement and HTMLCanvasElement as arguments, so we pass them as refs here
-        this.props.RecordImage(this.props.media, this.canvas, this.props.encoder)
+        this.props.RecordImage(this.props.media, this.canvas, this.props.encoder, this.overlay)
         this.props.ClearOverlay()
         this.props.SetOverlay(true, 'flash')
     }
@@ -125,8 +127,13 @@ class Control extends Component {
                     width   = { width  } 
                     height  = { height }
                 />
+                <img ref={ overlay => this.overlay = overlay } src={ overlayImage } />
             </div>
         )
+    }
+
+    renderOverlay() {
+        return( <img src={ buttonImage } /> )
     }
 
     componentDidMount() {
