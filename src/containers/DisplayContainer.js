@@ -14,7 +14,9 @@ class Display extends Component {
     }
 
     tryAgain(event) {
-        event.preventDefault()
+        if(event) {
+            event.preventDefault()
+        }
         this.props.Restart()
     }
 
