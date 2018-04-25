@@ -364,14 +364,14 @@ a, a:active, a:focus {
   }
 
   .inactive-video {
-    width: 100vmin;
+    width: 98vmin;
     height: 73vmin;
   }
 
   video {
     position: absolute;
     top: 1vh;
-    width: 100vmin;
+    width: 98vmin;
     height: 73vmin;
     background-repeat: repeat-x;
     background-position-y: 15px;
@@ -385,17 +385,17 @@ a, a:active, a:focus {
   }
   .overlay-flash {
     top: 2vmin;
-    width: 100vmin;
+    width: 98vmin;
     height: 73vmin;
   }
   .overlay-window-countdown {
-    width: 100vmin;
+    width: 98vmin;
     height: 73vmin;
   }
   
   .overlay-countdown {
     top: 2vmin;
-    width: 100vmin;
+    width: 98vmin;
     height: 73vmin;
   }
 
