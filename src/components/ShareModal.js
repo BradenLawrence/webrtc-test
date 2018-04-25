@@ -30,7 +30,7 @@ class ShareModal extends Component {
         a.click()
         document.body.removeChild(a)
         this.setState({ input: "Photowave" })
-        this.props.onClose
+        this.props.onClose()
     }
 
     render() {
