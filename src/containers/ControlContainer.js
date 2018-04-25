@@ -54,6 +54,7 @@ class Control extends Component {
     }
 
     createGif() {
+        this.props.RecordImage(this.props.media, this.canvas, this.props.encoder, this.overlay)
         this.props.ClearOverlay()
         this.props.GenerateGif(this.props.encoder);
     }
