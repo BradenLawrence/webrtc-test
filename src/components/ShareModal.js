@@ -43,7 +43,7 @@ class ShareModal extends Component {
                 <img className="frame" src={ this.props.url } alt="" />
                 <div className="share-controls">
                     <p>Remember this moment</p>
-                    <p>Email: <input className="input-email" placeholder="you@example.com" onChange={ event => this.onInputChange(event.target.value) } /></p>
+                    <p>Email: <input autoFocus className="input-email" placeholder="you@example.com" onChange={ event => this.onInputChange(event.target.value) } /></p>
                     <button className="button-download" onClick= { this.downloadFile } ><img src={ downloadImage } alt="Download" /></button><br/>
                     <button className="button-cancel" onClick= { this.props.onClose } >{ this.props.closeText }</button>
                 </div>
