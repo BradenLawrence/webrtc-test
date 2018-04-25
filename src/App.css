@@ -360,39 +360,39 @@ a, a:active, a:focus {
   }
 
   .inactive-video {
-    width: 101vmin;
-    height: 75vmin;
+    width: 100vmin;
+    height: 73vmin;
   }
 
   video {
     position: absolute;
     top: 1vh;
-    width: 101vmin;
-    height: 75vmin;
+    width: 100vmin;
+    height: 73vmin;
     background-repeat: repeat-x;
     background-position-y: 15px;
     background-color: #25252d;
   }
   .controls {
     position: absolute;
-    top: 75vmin;
+    top: 73vmin;
     left: 0;
     right: 0;
   }
   .overlay-flash {
     top: 2vmin;
-    width: 101vmin;
-    height: 75vmin;
+    width: 100vmin;
+    height: 73vmin;
   }
   .overlay-window-countdown {
-    width: 101vmin;
-    height: 75vmin;
+    width: 100vmin;
+    height: 73vmin;
   }
   
   .overlay-countdown {
     top: 2vmin;
-    width: 101vmin;
-    height: 75vmin;
+    width: 100vmin;
+    height: 73vmin;
   }
 
   .share-modal {
