@@ -132,7 +132,7 @@ a, a:active, a:focus {
   position: absolute;
   top: 4vh;
   width: 100%;
-  height: 86vh;
+  height: 96vh;
   background-color: #efeeed;
   text-align: center;
 }
@@ -322,7 +322,7 @@ a, a:active, a:focus {
     right: 40px;
     width: 80vmin;
     height: auto;
-    max-height: 95vh;
+    max-height: 86vh;
     margin: 0 auto;
     padding: 3vmin;
     padding-bottom: 4vmin;
