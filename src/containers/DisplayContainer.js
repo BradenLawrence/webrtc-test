@@ -11,16 +11,11 @@ class Display extends Component {
     constructor(props) {
         super(props)
         this.tryAgain = this.tryAgain.bind(this)
-        this.getVideo = this.getVideo.bind(this)
     }
 
     tryAgain(event) {
         event.preventDefault()
         this.props.Restart()
-    }
-
-    getVideo() {
-        return this.video
     }
 
     componentDidUpdate() {
