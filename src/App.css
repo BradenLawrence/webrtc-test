@@ -132,7 +132,7 @@ a, a:active, a:focus {
   position: absolute;
   top: 4vh;
   width: 100%;
-  height: 96vh;
+  height: 86vh;
   background-color: #efeeed;
   text-align: center;
 }
@@ -320,9 +320,9 @@ a, a:active, a:focus {
     top: 2vmin;
     left: 40px;
     right: 40px;
-    width: 80vmin;
+    width: 70vmin;
     height: auto;
-    max-height: 86vh;
+    max-height: 76vh;
     margin: 0 auto;
     padding: 3vmin;
     padding-bottom: 4vmin;
@@ -332,8 +332,8 @@ a, a:active, a:focus {
   }
   
   .share-modal > .frame {
-    max-width: none;
-    max-height: none;
+    max-width: 65vmin;
+    max-height: 45vmin;
     width: 80vmin;
   }
   .share-overlay {
