@@ -29,7 +29,8 @@ class ShareModal extends Component {
         document.body.appendChild(a)
         a.click()
         document.body.removeChild(a)
-        this.setState({ input: "Photowave" }) 
+        this.setState({ input: "Photowave" })
+        this.props.onClose
     }
 
     render() {
