@@ -9,7 +9,7 @@ import { StartStream,
          SetOverlay,
          ClearOverlay }         from '../actions'
 import buttonImage              from '../images/kick-it.png'
-import overlayImage             from '../images/BioBright-Logo-Horizontal.png'
+import overlayImage             from '../images/BL_logo.png'
 
 class Control extends Component {
     constructor(props) {
